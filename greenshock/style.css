@@ -1,0 +1,11 @@
+.body-wrapper{
+    height: 100vh;
+    text-align: center;
+}
+
+.logo{
+    width: 250px;
+    position: relative;
+    opacity: 0;
+    cursor: pointer;
+}

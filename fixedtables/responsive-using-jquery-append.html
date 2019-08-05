@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+        }
+
+        .table-scroll {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .table-wrap {
+            width: 100%;
+            overflow: auto;
+        }
+
+        .table-scroll table {
+            width: 100%;
+            margin: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table-scroll th,
+        .table-scroll td {
+            padding: 5px 10px;
+        }
+
+        .table-scroll thead,
+        .table-scroll tfoot {
+            background: #f9f9f9;
+        }
+
+        .clone {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .clone th,
+        .clone td {
+            visibility: hidden
+        }
+
+        .clone td,
+        .clone th {
+            border-color: transparent
+        }
+
+        .clone tbody th {
+            visibility: visible;
+            color: red;
+        }
+
+        .clone .fixed-side {
+            border: 1px solid #000;
+            background: #eee;
+            visibility: visible;
+        }
+
+        .clone thead,
+        .clone tfoot {
+            background: transparent;
+        }
+        .main-table          { overflow-y: auto; height: 100px; }
+        .main-table thead th { position: sticky; top: 0; }
+    </style>
+</head>
+
+<body>
+   
+                <div id="table-scroll" class="table-scroll">
+                    <div class="table-wrap">
+                        <table class="main-table" id="thetable" class="table  table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="fixed-side">#</th>
+                                    <th scope="col" class="fixed-side">Employee Number</th>
+                                    <th scope="col">First name</th>
+                                    <th scope="col">Last name</th>
+                                    <th scope="col">Handle</th>
+                                    <th scope="col">Salary</th>
+                                    <th scope="col">age</th>
+                                    <th scope="col">Designation</th>
+                                    <th scope="col">Years of Experience</th>
+                                    <th scope="col">Technology</th>
+                                    <th scope="col">Country</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">Marital Status</th>
+                                    <th scope="col">Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="fixed-side">1</th>
+                                    <td class="fixed-side">101</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>35000</td>
+                                    <td>30</td>
+                                    <td>Software Engineer</td>
+                                    <td>10</td>
+                                    <td>Angular</th>
+                                    <td>USA</td>
+                                    <td>New York</td>
+                                    <td>Married</td>
+                                    <td>1234567890</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fixed-side">2</th>
+                                    <td class="fixed-side">102</td>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>35000</td>
+                                    <td>35</td>
+                                    <td>Software Engineer</td>
+                                    <td>15</td>
+                                    <td>React</td>
+                                    <td>Canada</td>
+                                    <td>Toronto</td>
+                                    <td>Married</td>
+                                    <td>1234567890</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="fixed-side">3</th>
+                                    <td class="fixed-side">103</td>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>35000</td>
+                                    <td>40</td>
+                                    <td>Software Engineer</td>
+                                    <td>12</td>
+                                    <td>Vue</td>
+                                    <td>China</td>
+                                    <td>beijing</td>
+                                    <td>Married</td>
+                                    <td>1234567890</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+        <script>
+            $(document).ready(function () {
+                $(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');
+            })
+        </script>
+</body>
+
+</html>

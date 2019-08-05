@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.first-block{
+    height: 15vh; 
+}
+section{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero{
+    height: 100%;
+    width: 100%; 
+}
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.logo{
+    width: 150px;
+}
+.menu-logo{
+    width: 50px;
+}
+
+.slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #cefbff;
+    width: 100%;
+    z-index: -1;
+}
+
