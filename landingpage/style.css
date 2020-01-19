@@ -9,7 +9,7 @@ body{
 .first-block{
     height: 15vh; 
 }
-section{
+section{ 
     height: 80vh;
     display: flex;
     justify-content: center;
