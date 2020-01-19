@@ -1,0 +1,22 @@
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+        }
+
+        th,
+        td {
+            white-space: nowrap;
+        }
+
+        .first-col {
+            position: absolute;
+            width: 5em;
+            margin-left: -5em;
+        }
+
+        #table-wrapper {
+            overflow-x: scroll;
+            width: 800px;
+            margin: 0 auto;
+        }
