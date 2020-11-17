@@ -1,0 +1,60 @@
+@import '~assets/styles/variables.scss';
+
+.ptr{
+    cursor: pointer;
+}
+
+h1{
+    color:$primary-color;
+}
+.btn-1e {
+    overflow: hidden;
+}
+
+.text-black{
+    color: #000000;
+}
+
+.btn-1 {
+    border: 3px solid #000000;
+    color: #000000;
+}
+.btn {
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    transition: all 0.3s;
+    min-width: 150px;
+}
+.btn-1e:after {
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    background: #000000;
+    color: #fff;
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+.btn-1e:hover, .btn-1e:active {
+    color: #fff;
+}
+
+.btn-1e:hover:after {
+    height: 260%;
+    opacity: 1;
+}

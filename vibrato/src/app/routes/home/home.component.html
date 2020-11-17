@@ -1,0 +1,83 @@
+<div id="main-container">
+  <div class="container-fluid m-0 p-0" id="home-container">
+    <div id="nav-icon1" (click)="showAndHide()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="row m-0">
+      <div class="col-md-12 p-0">
+        <div class="first-block" *ngIf="firstBlock">
+          <div class="overlay"></div>
+          <video
+            playsinline="playsinline"
+            autoplay="autoplay"
+            muted="muted"
+            loop="loop"
+          >
+            <source
+              src="../../../assets/videos/garba-fuz.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <div class="row second-block m-0">
+      <div class="col-md-12 text-center pages">
+        <img
+          class="ptr"
+          src="../../../assets/images/logo.svg"
+          (click)="gotoHome()"
+        />
+        <ul
+          id="menus"
+          class="custom-menu  pl-0 list-unstyled"
+          (click)="menuNavigation($event)"
+        >
+          <li><a class="link">Artists</a></li>
+          <li><a class="link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-12 text-center social-media">
+        <ul class="list-unstyled" class="custom-menu pl-0">
+          <li>
+            <a
+              class="link"
+              href="https://www.facebook.com/vibratoentofficial/"
+              target="_blank"
+              >Facebook</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://www.youtube.com/channel/UCT4UfPMP-hszMtW0DqIgnpA"
+              target="_blank"
+              >Youtube</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://www.instagram.com/vibratoentofficial/"
+              target="_blank"
+              >Instagram</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="firstBlock">
+    <div id="aboutus-container" class="vhclass">
+      <app-about-us id="about-us"></app-about-us>
+    </div>
+  </ng-container>
+
+  <div id="contactus-container" class="vhclass" *ngIf="firstBlock">
+    <app-contact-us></app-contact-us>
+  </div>
+</div>

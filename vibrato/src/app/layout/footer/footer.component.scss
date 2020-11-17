@@ -1,0 +1,24 @@
+#footer-container {
+  .back-to-top {
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border: 1px solid #fff;
+    min-width: 50px;
+    z-index: 1000;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+  .arrow-up {
+    font-size: 26px;
+    color: #fff;
+  }
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

@@ -1,0 +1,24 @@
+@import '~assets/styles/base.scss';
+
+.send-button{
+    position: relative;
+    z-index: 2;
+}
+
+.btn{
+    margin: 0px;
+}
+
+.btn-1{
+    border: 3px solid #ffffff;
+}
+
+.btn-1e:after{
+    background: #ffffff;
+    color: #000000;
+}
+
+a:not([href]):not([tabindex]):hover{
+    color: #000000 !important;
+}
+

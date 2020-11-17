@@ -1,0 +1,120 @@
+<div id="contact-inner-container" class="container-fluid mt-4">
+  <!--Section: Contact v.2-->
+  <div class="col-md-12 text-center">
+    <h2 class="h1-responsive my-4">Contact us</h2>
+  </div>
+  <div class="col-md-12">
+    <p class="text-center w-responsive mx-auto mb-2">
+      Do you have any questions? Please do not hesitate to contact us directly.
+    </p>
+  </div>
+  <div class="row p-3">
+    <div class="col-md-9 mb-md-0 mb-5">
+      <form [formGroup]="registerForm" id="contact-form" name="contact-form">
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="name" class="">Your name</label>
+              <input
+                type="text"
+                formControlName="name"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+                id="name"
+                name="name"
+                class="form-control"
+              />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">First Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form mb-0">
+              <label for="email" class="">Your email</label>
+              <input
+                type="text"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                formControlName="email"
+                id="email"
+                name="email"
+                class="form-control"
+              />
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <div class="md-form mb-0">
+              <label for="subject" class="">Subject</label>
+              <input
+                type="text"
+                formControlName="subject"
+                [ngClass]="{ 'is-invalid': submitted && f.subject.errors }"
+                id="subject"
+                name="subject"
+                class="form-control"
+              />
+              <div
+                *ngIf="submitted && f.subject.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.subject.errors.required">Subject is required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-12">
+            <div class="md-form">
+              <label for="message">Your message</label>
+              <textarea
+                type="text"
+                formControlName="message"
+                id="message"
+                name="message"
+                rows="2"
+                class="form-control md-textarea"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div
+        class="text-center text-md-left send-button mt-3"
+        (click)="submitForm()"
+      >
+        <a class="btn btn-1 btn-1e">Send</a>
+      </div>
+      <div class="status"></div>
+    </div>
+    <div class="col-md-3 text-center">
+      <ul class="list-unstyled mb-0">
+        <li>
+          <i class="fas fa-map-marker-alt fa-2x"></i>
+          <p>
+            F - 6 Kalindi Appartments, Pashabhai park Race Course Road Vadodara
+            - 390007
+          </p>
+        </li>
+
+        <li>
+          <i class="fas fa-phone mt-4 fa-2x"></i>
+          <p>+ 91 7226978555</p>
+        </li>
+
+        <li>
+          <i class="fas fa-envelope mt-4 fa-2x"></i>
+          <p>sales@vibraoentertainment.com</p>
+        </li>
+      </ul>
+    </div>
+    <!--Grid column-->
+  </div>
+</div>
