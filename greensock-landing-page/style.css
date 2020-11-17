@@ -1,0 +1,76 @@
+/* 
+    1. SCSS variables
+    2. Common Styles
+    3. Global Styles
+    4. Typograhy Styles
+    5. Layout Styles
+*/
+/*  1. SCSS variables */
+/* 2. Common Styles */
+/* 3. Global Styles */
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 5. Layout Styles */
+.first-block {
+  background-color: #ead9f2;
+  height: 100vh;
+  padding: 15px;
+}
+
+.first-block .first-inline-block {
+  background-color: #ffffff;
+  height: 97.6vh;
+}
+
+.first-block .second-inline-block {
+  background-color: #ead9f2;
+  height: 58vh;
+  margin-top: 120px;
+}
+
+#logo {
+  width: 100px;
+}
+
+.tagline {
+  margin-top: 120px;
+}
+
+.banner-image-block {
+  height: 58vh;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bulb-image,
+.big-bulb,
+.boy-on-bulb,
+.three-wheels,
+.boy-right,
+.girl-left,
+.arrows,
+.cls-17,
+.cls-19,
+.cls-2 {
+  opacity: 0;
+}
+
+.animated-image {
+  position: absolute;
+  bottom: 0px;
+}
+
+@media screen and (max-width: 767px) {
+  .animated-image {
+    position: relative;
+  }
+  .banner-image-block {
+    height: auto;
+  }
+}
+/*# sourceMappingURL=style.css.map */
