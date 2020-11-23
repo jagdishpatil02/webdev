@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom traversal</title>
+  </head>
+  <body>
+    <style>
+      .grandparent {
+        background-color: #2ecc71;
+        width: 500px;
+        padding: 50px;
+        margin: 0 auto;
+        border: 2px solid #000;
+      }
+
+      .parent {
+        background-color: #e67e22;
+        padding: 50px;
+        border: 2px solid #000;
+        margin: 5px 0px 0px 0px;
+      }
+
+      .child {
+        background-color: #f1c40f;
+        width: 90px;
+        padding: 50px;
+        display: inline-block;
+        border: 2px solid #000;
+      }
+    </style>
+    <div class="grandparent" id="grandparent">
+      <div class="parent" id="parent">
+        <div class="child" id="childOne"></div>
+        <div class="child"></div>
+      </div>
+      <div class="parent">
+        <div class="child" id="childThree"></div>
+        <div class="child"></div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
