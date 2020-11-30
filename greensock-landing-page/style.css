@@ -4,17 +4,14 @@
     3. Global Styles
     4. Typograhy Styles
     5. Layout Styles
+    6. First Page Styles
 */
-/*  1. SCSS variables */
-/* 2. Common Styles */
-/* 3. Global Styles */
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
 }
 
-/* 5. Layout Styles */
 .first-block {
   background-color: #ead9f2;
   height: 100vh;

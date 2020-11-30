@@ -1,0 +1,51 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 62.5%;
+  font-size: 1.6rem;
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  color: #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.error-403-wrapper {
+  height: 100vh;
+  text-align: center;
+}
+
+.error-403-wrapper .heading {
+  font-weight: 800;
+  font-size: 3.4rem;
+}
+
+@-webkit-keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+
+@keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #featured-image {
+    max-width: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */

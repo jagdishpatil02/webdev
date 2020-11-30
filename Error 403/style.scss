@@ -1,0 +1,41 @@
+$base-font-size: 1.6rem;
+$base-font-family: "Montserrat", sans-serif;
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 62.5%;
+  font-size: $base-font-size;
+  background-color: #fff;
+  font-family: $base-font-family;
+  color: #000;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.error-403-wrapper {
+  height: 100vh;
+  text-align: center;
+  .heading {
+    font-weight: 800;
+    font-size: 3.4rem;
+  }
+}
+
+@keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2800px 0;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #featured-image {
+    max-width: 100%;
+  }
+}
