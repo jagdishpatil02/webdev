@@ -1,0 +1,49 @@
+$primary-color: #fff;
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #000;
+}
+.page-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fas {
+  font-size: 32px;
+  color: $primary-color;
+  cursor: pointer;
+}
+
+.playground {
+  width: 400px;
+  height: 82px;
+  #circleWrapper {
+    width: 80px;
+    height: 80px;
+    color: $primary-color;
+    border-radius: 50px;
+    border: 1px solid $primary-color;
+    position: relative;
+  }
+
+  #iconsWrapper {
+    justify-content: space-evenly;
+    width: 320px;
+  }
+}
+
+.border {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-radius: 45px;
+}
+
+.menu-open {
+  transition: transform 0.5s;
+  visibility: visible;
+}

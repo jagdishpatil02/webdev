@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="./style.css" rel="stylesheet" />
+    <title>Nav Bar</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 page-wrapper">
+          <div class="position-relative playground d-flex" id="playground">
+            <div
+              id="circleWrapper"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <em class="fas fa-bars" id="hamburger"></em>
+            </div>
+            <div
+              id="iconsWrapper"
+              class="invisible justify-content-stretch align-items-center d-flex"
+            >
+              <em class="fas fa-home"></em>
+              <em class="fas fa-search"></em>
+              <em class="fas fa-user"></em>
+              <em class="fas fa-camera"></em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let hamburger = document.querySelector("#hamburger");
+      let iconsWrapper = document.querySelector("#iconsWrapper");
+      let playground = document.querySelector("#playground");
+
+      hamburger.addEventListener("click", (e) => {
+        if (hamburger.classList.contains("fa-bars")) {
+          hamburger.classList.remove("fa-bars", "fas");
+          hamburger.classList.add("fa-times", "fas");
+          iconsWrapper.classList.remove("invisible");
+          iconsWrapper.classList.add("menu-open");
+          playground.classList.add("border");
+        } else {
+          hamburger.classList.remove("fas", "fa-times");
+          hamburger.classList.add("fas", "fa-bars");
+          iconsWrapper.classList.add("invisible");
+          iconsWrapper.classList.remove("menu-open");
+          playground.classList.remove("border");
+        }
+      });
+    </script>
+  </body>
+</html>

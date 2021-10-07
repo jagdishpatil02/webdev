@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.parent {
+  height: 100vh;
+  border: 20px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  /* align-content: flex-end; */
+}
+
+.child1 {
+  width: 200px;
+  height: 200px;
+  background: blue;
+  display: flex;
+  align-self: center;
+  order: 0;
+}
+
+.child2 {
+  width: 200px;
+  height: 200px;
+  background: red;
+  order: 1;
+}
+
+.child3 {
+  width: 200px;
+  height: 200px;
+  background: purple;
+  order: 0;
+}
