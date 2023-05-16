@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        width: 500px;
+        height: 500px;
+        background-color: lightgray;
+        position: relative;
+        content-visibility: auto;
+        contain-intrinsic-size: 500px 500px;
+      }
+
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: rotate 5s infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item"></div>
+    </div>
+  </body>
+</html>
