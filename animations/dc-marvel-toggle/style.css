@@ -1,11 +1,11 @@
 .active {
-    background-color: #000; /* Add your desired active state styles here */
+    background-color: #000;
   }
   
-  .inactive {
-    background-color: #fff  ; /* Add your desired inactive state styles here */
-  }
-  
-  .transition {
-    transition:background-color 1s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition duration and easing */
-  }
+.inactive {
+    background-color: #fff  ; 
+}
+
+.transition {
+    transition:background-color 1.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition duration and easing */
+}
