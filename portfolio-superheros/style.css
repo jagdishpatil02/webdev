@@ -1,0 +1,16 @@
+html{
+    cursor: url(./assets/thor-hammer-black.svg) 15 15,auto;
+    /* cursor: url(https://nirnejak.com//_next/static/media/circle.8f6fa399.svg) 15 15,auto; */
+}
+
+.active {
+    background-color: #000;
+  }
+  
+.inactive {
+    background-color: #fff  ; 
+}
+
+.transition {
+    transition:background-color 1.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition duration and easing */
+}

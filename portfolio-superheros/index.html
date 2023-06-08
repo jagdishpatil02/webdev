@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel/DC toggle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="flex items-center justify-end w-full p-2">
+        <label for="mdCheck" class="flex items-center cursor-pointer">
+            <!-- toggle -->
+            <div class="relative">
+                <div class="block bg-white w-full h-8 rounded-full border-2 relative flex justify-between items-center "
+                    id="marvelDCWrapper">
+                    <div id="marvel" class="w-12 rounded-full h-full flex justify-center items-center active">
+                        <img src="./assets/marvel.png" class=" w-12	p-1 ">
+                    </div>
+
+                    <div id="dc" class="w-12 rounded-full h-full flex justify-center items-center">
+                        <img src="./assets/dc.png" class="w-10 p-1">
+
+                    </div>
+                </div>
+            </div>
+        </label>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
