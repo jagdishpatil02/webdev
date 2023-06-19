@@ -1,0 +1,22 @@
+<section class="p-5 ">
+
+    <div contenteditable="true" class=" h-60 border-2 content border-2 h-full w-full outline-0	p-2 text-sm	" #contentGc
+        (input)="contentGcOutput=contentGc.innerText"></div>
+
+    <button class="block  bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2 cursor-pointer p-2"
+        (click)="genrateCode()">
+        Get data
+    </button>
+
+
+    <div *ngIf="response">
+
+        <ul>
+            <li *ngFor="let choice of response.choices">
+                <pre class="pre-custom">Content: {{ choice.message.content }}</pre>
+            </li>
+        </ul>
+
+
+    </div>
+</section>
