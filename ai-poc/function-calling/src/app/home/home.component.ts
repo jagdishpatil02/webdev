@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
       });
     });
   }
-
   genrateCode() {
     this.homeService
       .generateCode(this.contentGcOutput)

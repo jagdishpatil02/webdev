@@ -9,35 +9,37 @@ export class HomeService {
 
   constructor(private http: HttpClient) {}
 
-  generateCode(content: string) {
+  generateCode(code: string) {
     const body = {
       model: 'gpt-3.5-turbo-0613',
       messages: [
         {
           role: 'user',
-          content:
-            'explain this topic in the context of Kabhi Khushi Kabhie Gham, Kuch Kuch Hota Hai bollywood movie',
+          content: 'convert this code in python, c and java',
         },
-        { role: 'function', name: 'convertCode', content: `${content}` },
+        { role: 'function', name: 'convertCode', content: `${code}` },
       ],
       functions: [
         {
           name: 'convertCode',
-          description:
-            'explain this topic in the context of kabhi khushi kabhi ghum and Kuch Kuch Hota Hai  ',
+          description: 'convert this code in python, c and java ',
           parameters: {
             type: 'object',
             properties: {
-              kkkg: {
-                type: 'string',
-                description: 'the movie name is Kabhi Khushi Kabhie Gham ',
+              python: {
+                type: 'object',
+                description: 'the language is python ',
               },
-              kkkh: {
-                type: 'string',
-                description: 'the movie name is Kuch Kuch Hota Hai',
+              c: {
+                type: 'object',
+                description: 'the language is c',
+              },
+              java: {
+                type: 'object',
+                description: 'the language is java',
               },
             },
-            required: ['kkkg, kkkh'],
+            required: ['python, c, java'],
           },
         },
       ],
