@@ -3,44 +3,7 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		body {
-			margin: 0;
-			font-size: 28px;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
-		.header {
-			position: fixed;
-			top: 0;
-			z-index: 1;
-			width: 100%;
-			background-color: #f1f1f1;
-		}
-
-		.header h2 {
-			text-align: center;
-		}
-
-		.progress-bar {
-			width: 5%;
-			height: 75px;
-			background: #ccc;
-			border-radius: 100%;
-			position: absolute;
-			right: 28px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			top: 140px;
-		}
-
-		.content {
-			padding: 100px 0;
-			margin: 50px auto 0 auto;
-			width: 80%;
-		}
-	</style>
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,8 +12,8 @@
 		<h2>Scroll Indicator</h2>
 		<div class="progress-container">
 			<div class="progress-bar">
-				<span id="myBar"></span>
-
+				<span id="miniProgressBar" class="mini-pb"></span>
+				<span id="indicator" class="indicator"></span>
 			</div>
 		</div>
 	</div>
@@ -92,19 +55,7 @@
 			Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
 	</div>
 
-	<script>
-		// When the user scrolls the page, execute myFunction 
-		window.onscroll = function () { myFunction() };
-
-		function myFunction() {
-			var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-			var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-			var scrolled = (winScroll / height) * 100;
-			console.log(scrolled)
-			document.getElementById("myBar").innerText = Math.floor(scrolled) + "%";
-		}
-	</script>
-
+	<script src="./index.js"></script>
 </body>
 
 </html>
