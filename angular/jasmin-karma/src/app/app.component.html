@@ -1,0 +1,26 @@
+<div class="calculator">
+  <h2>Calculator</h2>
+
+  <div class="input-group">
+    <input type="number" [(ngModel)]="num1" placeholder="Enter the first number">
+  </div>
+
+  <div class="input-group">
+    <input type="number" [(ngModel)]="num2" placeholder="Enter the second number">
+  </div>
+
+  <div class="input-group">
+    <button (click)="add()">Add</button>
+    <button (click)="subtract(num1, num2)">Subtract</button>
+    <button (click)="multiply()">Multiply</button>
+    <button (click)="divide()">Divide</button>
+  </div>
+
+  <div class="result" *ngIf="result !== undefined">
+    <p>Results: {{ result }}</p>
+  </div>
+
+  <div *ngFor="let data of employeeData">
+    name: {{data.name.first}} {{data.name.last}}
+  </div>
+</div>
