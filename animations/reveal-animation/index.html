@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+
+            margin: 2rem 10rem 2rem 10rem;
+            height: 100%;
+            min-height: 100%;
+            color: #000;
+            background-color: #000;
+            font-size: 1.2rem;
+        }
+
+        #invertedcursor {
+            z-index: 10;
+            position: relative;
+        }
+
+        #dynamicText {
+            z-index: 1000;
+            position: relative;
+        }
+
+        #dynamicText span:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="invertedcursor">
+        <p id="dynamicText">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error sed quia commodi nobis
+            voluptatem laudantium
+            nostrum iusto sapiente exercitationem laborum, odio tempora ipsa doloremque blanditiis architecto tempore
+            officiis quibusdam optio.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, provident iste. Culpa adipisci quidem
+            ratione officiis quibusdam optio.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, provident iste. Culpa adipisci quidem
+            ratione officiis quibusdam optio.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, provident iste. Culpa adipisci quidem
+            ratione officiis quibusdam optio.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, provident iste. Culpa adipisci quidem
+            ratione
+        </p>
+    </div>
+
+
+
+
+
+
+    <script>
+
+        // Get the <p> element by its ID
+        const paragraph = document.getElementById("dynamicText");
+
+        // Split the text content into an array of words
+        const words = paragraph.textContent.split(" ");
+
+        // Create a new HTML structure with individual <span> elements for each word
+        paragraph.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
+        document.body.onmousemove = function (e) {
+
+            document.documentElement.style.setProperty(
+                '--x', (
+                    e.clientX + window.scrollX
+                )
+            + 'px'
+            );
+            document.documentElement.style.setProperty(
+                '--y', (
+                    e.clientY + window.scrollY
+                )
+            + 'px'
+            );
+
+
+
+        }
+
+
+    </script>
+</body>
+
+
+
+</html>
