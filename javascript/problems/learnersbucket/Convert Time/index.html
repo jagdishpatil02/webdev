@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Given a string representing time in 12 hours format, convert it to 24 hours format
+
+    </h1>
+
+    <script>
+        function convert12HourTo24Hour(time12Hour) {
+            let timeRegex = /^(\d+):(\d{1,2})\s*([APap][Mm])$/; // Regular expression for matching time
+
+            let match = time12Hour.match(timeRegex);
+            if (!match) {
+                return "Invalid input"; // Return an error message for invalid input.
+            }
+
+            let hours = parseInt(match[1]);
+            let minutes = parseInt(match[2]);
+            let period = match[3].toLowerCase();
+
+            if (hours === 12) {
+                hours = period === "pm" ? 12 : 0; // Handle 12:XX AM and 12:XX PM
+            } else if (period === "pm") {
+                hours += 12;
+            }
+
+            // Format hours and minutes with leading zeros if necessary
+            let hours24 = String(hours).padStart(2, '0');
+            let minutes24 = String(minutes).padStart(2, '0');
+
+            return `${hours24}:${minutes24}`;
+        }
+
+        // Example usage:
+        let time12Hour = "12:10AM";
+        let time24Hour = convert12HourTo24Hour(time12Hour);
+        console.log(time24Hour); // Output: "23:08"
+
+
+    </script>
+</body>
+
+</html>

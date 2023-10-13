@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Given a string and size k, chop the string into chunks of k-length and return them as an array
+    </h1>
+
+    <script>
+        function chopStr(str, k) {
+            let charArr = [];
+            if (k > 0) {
+                for (let i = 0; i < str.length; i += k) {
+                    let finalStr = str.substr(i, k);
+                    charArr.push(finalStr);
+
+                }
+            } else {
+                charArr.push(str);
+            }
+
+            console.log(charArr)
+        }
+        chopStr("Javascript", 2);
+    </script>
+</body>
+
+
+</html>
