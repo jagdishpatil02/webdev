@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
-<body>
+<body class="flex justify-center items-center h-screen flex-col">
     <div class="otp-wrapper">
         <input type="number" class="otp-input" maxlength="1" />
         <input type="number" class="otp-input" maxlength="1" />
@@ -18,8 +20,9 @@
 
         <input type="number" class="otp-input" maxlength="1" />
     </div>
-    <div>
+    <div class="flex flex-col justify-center items-center">
         <p id="message"></p>
+        <p id="resentOTP" class="mt-4 text-blue-600 underline cursor-pointer"></p>
     </div>
 
 
