@@ -1,0 +1,49 @@
+
+@font-face {
+    font-family: 'Disney.ttf';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Disney.ttf'), url('Disney.woff') format('woff');
+}
+html {
+	box-sizing: border-box;
+    font-family: 'Disney.ttf';
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+}
+
+.container {
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+}
+
+.logo {
+    width: 800px;
+}
+
+.spark {
+    mix-blend-mode: screen;
+}
