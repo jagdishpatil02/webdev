@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
-
+import ContextComponent from "./components/ContextComponent";
+export const ThemeContext = React.createContext();
 // use state with function that will be called everytime
 // function runFunction() {
 //   console.log("called multiple times");
@@ -83,6 +84,11 @@ function App() {
 
   // use context
 
+  const [darkThemeContext, SetDarkThemeContext] = useState(true);
+
+  function toggleTheme() {
+    SetDarkThemeContext((prevDarkTheme) => !prevDarkTheme);
+  }
   return (
     <>
       <h2>Use State Example</h2>
@@ -146,6 +152,11 @@ function App() {
       <div>I rendered {renderCount.current} times</div>
 
       <h2>Use Context</h2>
+
+      <ThemeContext.Provider value={darkThemeContext}>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+        <ContextComponent></ContextComponent>
+      </ThemeContext.Provider>
     </>
   );
 }
