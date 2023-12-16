@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Browser storage example</h1>
+
+    <button onclick="setCookie()">Set cookie</button>
+
+    <button onclick="setLocalStorageItem()">Set Theme in local storage</button>
+
+    <button onclick="getLocalStorageItem()">Get Theme in local storage</button>
+
+    <button onclick="getLocalStorageItem()">Get Theme in local storage</button>
+
+    <button onclick="setSessionStorageItem()">Set Theme in session storage</button>
+
+    <button onclick="getSessionStorageItem()">get Theme in session storage</button>
+
+    <button onclick="removeSessionStorageItem()">Remove Theme in session storage</button>
+
+
+    <script>
+
+        function setCookie() {
+            const userToken = '1234567890'
+            document.cookie = "usetToken=" + userToken + ';expires=' + new Date(2024, 0, 1);
+            if (document.cookie) {
+                console.log("cookie is set")
+            }
+        }
+
+        function setLocalStorageItem() {
+            let theme = 'black';
+            localStorage.setItem('theme', theme)
+        }
+
+        function getLocalStorageItem() {
+            let key = localStorage.getItem('theme');
+            console.log("local storage", key)
+        }
+
+        function setSessionStorageItem() {
+            let theme = 'white';
+            sessionStorage.setItem('theme', theme)
+        }
+
+        function getSessionStorageItem() {
+            let key = sessionStorage.getItem('theme');
+            console.log("session storage", key)
+        }
+
+        function removeSessionStorageItem() {
+            sessionStorage.removeItem('theme');
+        }
+
+    </script>
+</body>
+
+</html>
