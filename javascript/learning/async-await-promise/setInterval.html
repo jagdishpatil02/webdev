@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Interval</h1>
+
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+
+    <script>
+        var stopDebug;
+        document.querySelector("#start").addEventListener("click", function () {
+            stopDebug = setInterval(startDebug, 1000, "jagdish")
+        })
+
+        document.querySelector("#stop").addEventListener("click", function () {
+            clearInterval(stopDebug)
+        })
+
+        const startDebug = (str) => {
+            console.log(str, Date.now())
+        }
+
+
+
+    </script>
+</body>
+
+</html>

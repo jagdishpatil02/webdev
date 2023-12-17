@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Promise chain</h1>
+
+
+    <script>
+
+        const cart = ["pants", "shoes"]
+
+        createOrder(cart).then(function (orderId) {
+            console.log("orderId", orderId)
+            return orderId;
+        }).then(function (orderId) {
+            return proceedToPayment(orderId);
+        }).then(function (paymentInfo) {
+            console.log(paymentInfo)
+            return paymentInfo;
+        }).then(function (paymentInfo) {
+            return showOrderSummary(paymentInfo)
+        }).then(function (paymentInfo) {
+            console.log(paymentInfo)
+        }).catch(function (err) {
+            console.log(err.message)
+        }
+        )
+
+
+        function createOrder(cart) {
+            const pr = new Promise(function (resolve, reject) {
+                let orderId = '123'
+                if (!validate(orderId)) {
+                    const err = new Error("invalid order id")
+                    reject(err)
+                }
+
+                if (orderId) {
+                    setTimeout(() => {
+                        resolve(orderId)
+                    }, 2000);
+                }
+
+            })
+            return pr;
+        }
+
+
+        function proceedToPayment(orderId) {
+            return new Promise(function (resolve, reject) {
+                resolve("payment sucess")
+            })
+        }
+
+        function showOrderSummary(orderId, paymentInfo) {
+            return new Promise(function (resolve, reject) {
+                resolve("show order summary")
+            })
+        }
+        function validate(orderId) {
+            return true;
+        }
+
+        // const cart = ["shoes", "pants"]
+
+        // createOrder(cart).then(function (orderId) {
+        //     console.log(orderId)
+        //     return orderId;
+        // }).then(function (orderId) {
+        //     return proceedToPayment(orderId);
+        // }).then(function (paymentInfo) {
+        //     console.log(paymentInfo)
+        // }).catch(function (err) {
+        //     console.log(err.message)
+        // })
+
+        // function createOrder(cart) {
+        //     const pr = new Promise(function (resolve, reject) {
+        //         const orderId = "132";
+
+        //         if (!validate(orderId)) {
+        //             const err = new Error("invalid product id")
+        //             reject(err)
+        //         }
+
+        //         if (orderId) {
+        //             setTimeout(() => {
+        //                 resolve(orderId)
+        //             }, 2000);
+        //         }
+        //     })
+        //     return pr;
+        // }
+
+        // function proceedToPayment(orderId) {
+        //     return new Promise(function (resolve, reject) {
+        //         resolve("payment successfull")
+        //     })
+        // }
+
+        // function validate(cart) {
+        //     return true;
+        // }
+
+
+    </script>
+</body>
+
+</html>
