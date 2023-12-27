@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Async and Await</h1>
+</body>
+
+<script>
+
+    async function getData() {
+        return "jagdish"
+    }
+
+    const dataPromise = getData();
+
+    dataPromise.then(res => console.log(res))
+
+
+    const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("promise resolved")
+        }, 5000);
+    });
+
+    async function promiseResolved() {
+        const temp = await p;
+        console.log(temp)
+    }
+
+    promiseResolved();
+
+
+    async function userData() {
+
+        const data = await fetch('https://api.github.com/users/jagdishpatil02')
+        const responseObj = await data.json();
+        console.log("called")
+        console.log(responseObj)
+
+        const resolvedPromise = await p;
+        console.log(resolvedPromise)
+    }
+
+
+    userData();
+
+</script>
+
+</html>
