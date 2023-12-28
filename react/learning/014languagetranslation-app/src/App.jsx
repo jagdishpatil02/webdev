@@ -87,6 +87,7 @@ function App() {
 
   return (
     <>
+      {/* input component */}
       <div className="flex  items-start flex-col py-16 px-16">
         <div>
           <label className=" text-sm font-medium text-white inline">
@@ -100,6 +101,7 @@ function App() {
           />
         </div>
 
+        {/* button component */}
         <div className="my-4">
           <label className="block text-sm font-medium text-white mb-4">
             Convert to:
@@ -121,6 +123,7 @@ function App() {
           )}
         </div>
 
+        {/* output */}
         <div className="mb-4">
           <p className="font-bold text-white">
             Your translated text is: {translatedValue}
