@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Map, Filter, Reduce</h1>
+    <script>
+        let arr = [1, 2, 3, 4, 5]
+
+        // map is used to transform the array
+        let mappedNewArr = arr.map(item => {
+            return item * 3;
+        });
+
+        // filter is used to filter the array based on some condition
+
+        let filterdArr = arr.filter(item => {
+            return item > 2;
+        });
+
+
+        let reduceArr = arr.reduce((acc, curr) => {
+            acc = acc + curr;
+            return acc;
+        }, 0)
+
+        console.log("mappedNewArr", mappedNewArr)
+        console.log("filterdArr", filterdArr)
+        console.log("reduceArr", reduceArr)
+
+
+    </script>
+</body>
+
+</html>
