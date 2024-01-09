@@ -1,7 +1,10 @@
 import HelloWorld, { message, message1 } from "./Hello.jsx";
+import Person1 from "./Person1.jsx";
+import Person2 from "./Person2.jsx";
 import ProfileCard from "./ProfileCard.jsx";
 import { Provider } from "./context/context.jsx";
-
+import hoc from "./hoc/hoc.jsx";
+import { Hooks } from "./hooks.jsx";
 // import React from 'react'
 const username = "jagdish";
 
@@ -35,6 +38,9 @@ function App() {
         {data.map((name, index) => (
           <ProfileCard assistant={name} key={index} />
         ))}
+        <Hooks />
+        <Person1 />
+        <Person2 />
       </Provider>
     </>
   );
