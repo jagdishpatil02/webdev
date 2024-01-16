@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Accordian Component</h1>
+
+    <div id="accordian-wrapper">
+
+    </div>
+
+    <script>
+        (function () {
+            const data = [{
+                question: 'question 1',
+                answer: 'answer 1',
+            }, {
+                question: 'question 2',
+                answer: 'answer 2',
+            }, {
+                question: 'question 3',
+                answer: 'answer 3',
+            }]
+
+            const accordianWrapper = document.querySelector('#accordian-wrapper');
+            data.forEach(element => {
+                let accordianQue = document.createElement('div');
+                accordianQue.innerText = element.question;
+                accordianQue.classList.add('accordion-question');
+                accordianQue.addEventListener('click', () => accordionToggle(accordianQue))
+                let accordianAns = document.createElement('div');
+                accordianAns.innerText = element.answer;
+                accordianAns.classList.add('accordian-answer')
+                accordianAns.classList.add('hide')
+                accordianQue.appendChild(accordianAns);
+                accordianWrapper.appendChild(accordianQue)
+            });
+
+
+            function accordionToggle(accordionQuestion) {
+                const answer = accordionQuestion.querySelector('.accordian-answer');
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            }
+
+        })();
+
+
+
+    </script>
+</body>
+
+</html>
