@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Generators</h1>
+
+    <script>
+        function* getData() {
+            yield 1,
+                yield 2,
+                yield 3
+
+        }
+
+        let generatorObj = getData();
+
+        console.log(generatorObj.next());
+        console.log(generatorObj.next());
+        console.log(generatorObj.next());
+        console.log(generatorObj.next());
+
+        // usecase to create ids
+
+        function* getID() {
+            let id = 1;
+            while (true) {
+                yield id;
+                id++;
+            }
+        }
+
+
+        let id = getID();
+
+        console.log(id.next());
+        console.log(id.next());
+        console.log(id.next());
+        console.log(id.next());
+
+
+    </script>
+</body>
+
+
+
+</html>
