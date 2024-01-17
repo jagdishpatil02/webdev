@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Function currying</h1>
+
+    <script>
+
+        // using bind
+        let multiply = function (x, y) {
+            console.log(x * y)
+        }
+
+        let multiplyByTwo = multiply.bind(this, 2);
+        multiplyByTwo(5);
+
+        let multiplyByThree = multiply.bind(this, 3);
+        multiplyByThree(5);
+
+
+        // using closures
+
+        let addition = function (x) {
+            return function (y) {
+                console.log(x + y)
+            }
+        }
+
+
+        let addObj = addition(2);
+        addObj(3);
+
+        // one more ex
+
+        function addName(firstname) {
+            return function (lastname) {
+                return function (surname) {
+                    console.log(firstname + lastname + surname)
+                }
+            }
+        }
+        addName('Mahendra')('Singh')('Dhoni');
+    </script>
+
+</body>
+
+</html>
