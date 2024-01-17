@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Rest and Spread</h1>
+
+    <script>
+
+        // rest operator combines the elements that you passed
+        function addNumber(a, b, c, ...other) {
+            let sum = a + b + c;
+
+            for (const num of other) {
+                sum = sum + num
+            }
+
+            return sum;
+        }
+
+        console.log(addNumber(1, 2, 3, 4, 5))
+
+        // spread operator speads the elements that you passed
+
+        let names = ['Emiway', 'Kr$na', 'Muhfaad', 'Raftaar'];
+
+        function getNames(name1, name2, name3, name4) {
+            console.log(name1, name2, name3, name4)
+        }
+        getNames(...names)
+
+        // rest with objects
+        const person = {
+            name: 'jagdish',
+            age: 29,
+            hobbies: ['writing', 'playing cricket']
+        }
+
+        const { name, ...rest } = person;
+        console.log(name);
+        console.log(rest);
+
+        // spread with objects 
+
+        const employee = {
+            name: 'jagdish',
+            age: 29,
+            technology: 'angular'
+        }
+
+        const employee1 = { ...employee, technology: 'react' }
+
+        console.log(employee);
+        console.log(employee1);
+
+
+    </script>
+</body>
+
+</html>
