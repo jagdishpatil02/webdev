@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Debouncing</h1>
+    <input type="text" onkeyup="betterFunction()" />
+    <button id="throttle" onclick="throttledButtonClick()">Click me</button>
+
+
+    <script>
+
+        // debounce example
+        let counter = 0;
+        function getData() {
+            console.log("get data", counter++)
+        }
+
+        const debounce = function (fn, d) {
+            let timer;
+            return function () {
+                let context = this, arg = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    getData.apply(getData, arg)
+                }, d);
+            }
+        }
+
+        const betterFunction = debounce(getData, 300)
+
+        // throttle example
+        const btn = document.querySelector("#throttle");
+
+        // Throttling Function
+        function throttledFunction(fun, delay) {
+            let prev = 0;
+            return (...args) => {
+                let now = Date.now();
+                console.log(now - prev, delay);
+
+                if (now - prev >= delay) {
+                    prev = now;
+                    return fun(...args);
+                }
+            }
+        }
+
+        const throttledButtonClick = throttledFunction(() => {
+            console.log("button click")
+        }, 1500)
+    </script>
+</body>
+
+</html>
