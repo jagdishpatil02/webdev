@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Call apply bind</h1>
+
+    <script>
+
+        const person = {
+            firstname: 'jagdish',
+            lastname: 'patil',
+        }
+
+        const person2 = {
+            firstname: 'sachin',
+            lastname: 'patil',
+        }
+
+
+        let printName = function (hometown, state) {
+            console.log(this.firstname + " " + this.lastname + ' from ' + hometown + ' and ' + state)
+        }
+
+        // function borrowing
+
+        printName.call(person, 'vadodara', 'gujarat');
+
+        printName.call(person2, 'pune', 'mh');
+
+        // apply method only difference is that how we pass args
+        printName.apply(person2, ['pune', 'mh']);
+
+        // bind method doesn't call but returns a method which can be called later
+        const name = printName.bind(person, 'pune', 'mh');
+        name()
+
+
+    </script>
+
+
+</body>
+
+
+</html>
