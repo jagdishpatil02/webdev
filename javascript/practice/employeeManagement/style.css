@@ -1,0 +1,39 @@
+.employee-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.employees-list{
+    width: 30%;
+    border: 1px solid;
+}
+
+.employee-list{
+    width: 70%;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.selected{
+    background-color: #f2f2f2;
+}
+
+.employee-names-items{
+    display: block;
+}
+
+.employee-list img{
+    width: 250px;
+    height: 250px;
+}
+
+.employee-list span{
+    display: block;
+}
