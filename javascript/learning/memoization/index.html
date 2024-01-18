@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Memoization</h1>
+
+    <script>
+        // Memoization is a powerful optimization technique used in computer programming to speed up the execution of functions by caching their results
+        const prevValues = [];
+
+        function square(num) {
+
+            if (prevValues[num] != null) {
+                return prevValues[num];
+            }
+            let result = 0;
+            for (i = 0; i <= num; i++) {
+                for (j = 0; j <= num; j++) {
+                    result += 1;
+                }
+            }
+
+            prevValues[num] = result;
+            return result;
+        }
+
+        console.log(square(30000));
+        console.log(square(30000));
+        console.log(square(30000));
+        console.log(square(30000));
+        console.log(square(30000));
+
+
+
+    </script>
+</body>
+
+</html>
