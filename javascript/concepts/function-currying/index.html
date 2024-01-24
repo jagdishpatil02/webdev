@@ -47,6 +47,35 @@
             }
         }
         addName('Mahendra')('Singh')('Dhoni');
+
+
+        // works for only three args
+        function sum(a) {
+            return function (b) {
+                return function (c) {
+                    return a + b + c;
+                }
+            }
+        }
+
+        console.log(sum(1)(2)(3)());
+
+        // works for n args
+
+        function sum(a) {
+            return function (b) {
+                if (!b) {
+                    return a;
+                }
+
+                return sum(a + b);
+            }
+        }
+
+
+        console.log(sum(1)(2)(3)(4)(5)(6)());
+
+
     </script>
 
 </body>
