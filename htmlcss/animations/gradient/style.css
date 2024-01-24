@@ -1,5 +1,11 @@
 
 
+.bg-image{
+background-image: url('https://i.ibb.co/Wn36dXz/pexels-codioful-formerly-gradienta-7130560.jpg');
+background-size: cover;
+
+}
+
 @keyframes danger-gradient {
     0% {
         background-position: 0% 50%;
