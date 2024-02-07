@@ -1,0 +1,15 @@
+.wrapper{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.sticky-wrapper{
+    margin: 10px ;
+
+}
+.sticky-block {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #000;
+    padding: 20px;
+}
