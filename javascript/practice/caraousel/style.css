@@ -1,0 +1,24 @@
+
+
+
+.carousel-wrapper{
+    width: 40%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f2f2f2;
+    margin: 10px auto;
+}
+
+.carousel-wrapper img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: 1s;
+}
+
+.buttons-wrapper{
+    margin: 0 auto  ;
+    text-align: center;
+}
+
