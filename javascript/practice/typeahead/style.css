@@ -1,0 +1,30 @@
+.search-container {
+    position: relative;
+    width: 185px;
+}
+
+input{
+    padding: 10px;
+}
+  
+  .autocomplete-results {
+    width: 100%;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: #f9f9f9;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .autocomplete-results li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .autocomplete-results li:hover {
+    background-color: #e5e5e5;
+  }
+  
