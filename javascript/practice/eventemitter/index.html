@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Event Emitter</h1>
+
+    <script>
+
+
+        function EventEmitter() {
+            this.events = {}
+        }
+
+        EventEmitter.prototype.on = function (event, listener) {
+            if (!this.events[event]) {
+                this.events[event] = [];
+            }
+
+            this.events[event].push(listener)
+        }
+
+        EventEmitter.prototype.emit = function (event, ...args) {
+            const listeners = this.events[event];
+            if (listeners) {
+                listeners.forEach(listener => {
+                    listener.apply(null, args)
+                });
+            }
+        }
+
+
+        const emitter = new EventEmitter();
+
+        emitter.on("greet", name => {
+            console.log(`hello, ${name}`);
+        });
+
+        emitter.emit('greet', 'Alice')
+
+
+    </script>
+</body>
+
+</html>
