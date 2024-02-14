@@ -1,0 +1,13 @@
+.progressbar{
+    width: 500px;
+    height: 50px;
+    background-color: lightgray;
+
+}
+
+.progress{
+    transition: 1s;
+    background-color: green;
+    height: 50px;
+    width: 0px;
+}
