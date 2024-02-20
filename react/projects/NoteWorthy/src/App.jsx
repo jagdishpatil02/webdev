@@ -1,10 +1,10 @@
 import './App.css';
-import Content from './components/Content';
+import Pad from './components/Pad';
 
 function App() {
   return (
     <>
-      <Content></Content>
+      <Pad></Pad>
     </>
   );
 }
