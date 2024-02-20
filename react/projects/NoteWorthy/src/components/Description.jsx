@@ -1,16 +1,32 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { ClearContext } from '../context/ClearContext';
+import {
+  forwardRef,
+  useContext,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
+import { ClearContext } from "../context/ClearContext";
 
-export const Description = () => {
-  const [content, setContent] = useState(' ');
+export const Description = forwardRef((props, ref) => {
+  const [content, setContent] = useState(" ");
   const { clearData } = useContext(ClearContext);
+  const noteRef = useRef(null);
+
+  // Expose the div reference to the parent component
+  useImperativeHandle(ref, () => ({
+    getDivContent: () => {
+      console.log("noteRef.current.innerText)", noteRef.current.innerText);
+      return noteRef.current.innerText;
+    },
+  }));
 
   useEffect(() => {
-    setContent(' ');
+    setContent(" ");
   }, [clearData]);
 
   useEffect(() => {
-    let getContent = window.localStorage.getItem('content');
+    let getContent = window.localStorage.getItem("content");
     if (getContent) {
       setContent(getContent);
     }
@@ -26,19 +42,20 @@ export const Description = () => {
     sel.removeAllRanges();
     sel.addRange(range);
   }, [content]);
-  const noteRef = useRef();
 
   const handleNote = (e) => {
     setContent(e.target.innerHTML);
-    window.localStorage.setItem('content', e.target.innerHTML);
+    window.localStorage.setItem("content", e.target.innerHTML);
   };
   return (
     <div
       ref={noteRef}
-      contentEditable='true'
-      className=' w-full h-[70vh]  text-left outline-0 mt-4 '
+      contentEditable="true"
+      className=" w-full h-[70vh]  text-left outline-0 mt-4 "
       onInput={handleNote}
       dangerouslySetInnerHTML={{ __html: content }}
     ></div>
   );
-};
+});
+
+Description.displayName = "Description";
