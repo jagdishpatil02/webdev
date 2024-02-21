@@ -26,7 +26,6 @@ function Createuser() {
       body: JSON.stringify(requestJson),
     });
 
-    console.log("POST request successful:", response);
     if (response.status == 201) {
       alert("User created successfully created");
     }

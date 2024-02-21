@@ -95,51 +95,75 @@ const Pad = () => {
 
   return (
     <>
-      <ClearContext.Provider value={{ clearData }}>
-        <div className="w-full mb-8">
-          <Heading></Heading>
+      <div className="flex lg:flex-row flex-col">
+        <div className="lg:w-2/12 w-full">
+          <p className="my-8 font-bold underline text-2xl flex items-start justify-center">
+            NoteWorthy
+          </p>
         </div>
-        <div className="text-left">
-          <button onClick={fontBoldHandle} className="mr-4 text-[#757575]">
-            <FaBold className="text-xl" />
-          </button>
-          <button onClick={fontItalicHandle} className="mr-4 text-[#757575]">
-            <FaItalic className="text-xl" />
-          </button>
-          <button onClick={fontStrikeThrough} className="mr-4 text-[#757575]">
-            <FaStrikethrough className="text-xl" />
-          </button>
+        <div className="lg:w-8/12 w-full">
+          <ClearContext.Provider value={{ clearData }}>
+            <div className="w-full mb-8">
+              <Heading></Heading>
+            </div>
+            <div className="text-left">
+              <button onClick={fontBoldHandle} className="mr-4 text-[#757575]">
+                <FaBold className="text-xl" />
+              </button>
+              <button
+                onClick={fontItalicHandle}
+                className="mr-4 text-[#757575]"
+              >
+                <FaItalic className="text-xl" />
+              </button>
+              <button
+                onClick={fontStrikeThrough}
+                className="mr-4 text-[#757575]"
+              >
+                <FaStrikethrough className="text-xl" />
+              </button>
 
-          <button onClick={fontLargeBold} className="mr-4 text-[#757575]">
-            <FaHeading className="text-xl" />
-          </button>
-          <button onClick={fontLarge} className="mr-4 text-[#757575]">
-            <LuHeading2 className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={dividerHandle} className="mr-4 text-[#757575]">
-            <RxDividerHorizontal className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={bulletListHandle} className="mr-4 text-[#757575]">
-            <PiListBullets className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={numberListHandle} className="mr-4 text-[#757575]">
-            <MdOutlineFormatListNumbered className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={blockQuoteHandle} className="mr-4 text-[#757575]">
-            <BsBlockquoteLeft className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={codeHandle} className="mr-4 text-[#757575]">
-            <FaCode className="text-3xl relative top-[5px]" />
-          </button>
-          <button onClick={deleteNote} className="mr-4 text-[#757575]">
-            <MdDelete className="text-xl" />
-          </button>
-          <button onClick={downloadNote} className="mr-4 text-[#757575]">
-            <IoMdDownload className="text-xl" />
-          </button>
+              <button onClick={fontLargeBold} className="mr-4 text-[#757575]">
+                <FaHeading className="text-xl" />
+              </button>
+              <button onClick={fontLarge} className="mr-4 text-[#757575]">
+                <LuHeading2 className="text-3xl relative top-[5px]" />
+              </button>
+              <button onClick={dividerHandle} className="mr-4 text-[#757575]">
+                <RxDividerHorizontal className="text-3xl relative top-[5px]" />
+              </button>
+              <button
+                onClick={bulletListHandle}
+                className="mr-4 text-[#757575]"
+              >
+                <PiListBullets className="text-3xl relative top-[5px]" />
+              </button>
+              <button
+                onClick={numberListHandle}
+                className="mr-4 text-[#757575]"
+              >
+                <MdOutlineFormatListNumbered className="text-3xl relative top-[5px]" />
+              </button>
+              <button
+                onClick={blockQuoteHandle}
+                className="mr-4 text-[#757575]"
+              >
+                <BsBlockquoteLeft className="text-3xl relative top-[5px]" />
+              </button>
+              <button onClick={codeHandle} className="mr-4 text-[#757575]">
+                <FaCode className="text-3xl relative top-[5px]" />
+              </button>
+              <button onClick={deleteNote} className="mr-4 text-[#757575]">
+                <MdDelete className="text-xl" />
+              </button>
+              <button onClick={downloadNote} className="mr-4 text-[#757575]">
+                <IoMdDownload className="text-xl" />
+              </button>
+            </div>
+            <Description ref={descriptionRef}></Description>
+          </ClearContext.Provider>
         </div>
-        <Description ref={descriptionRef}></Description>
-      </ClearContext.Provider>
+      </div>
     </>
   );
 };
