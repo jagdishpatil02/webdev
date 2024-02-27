@@ -8,18 +8,19 @@ export const SimpleTodo = () => {
     <div>
       <h1>Todos</h1>
       <ul>
-        {todos.map((todo) => {
-          return (
-            <div key={todo.id}>
-              <li>
-                {todo.text}
-                <button onClick={() => dispath(removeTodo(todo.id))}>
-                  Delete
-                </button>
-              </li>
-            </div>
-          );
-        })}
+        {todos &&
+          todos.map((todo) => {
+            return (
+              <div key={todo.id}>
+                <li>
+                  {todo.text}
+                  <button onClick={() => dispath(removeTodo(todo.id))}>
+                    Delete
+                  </button>
+                </li>
+              </div>
+            );
+          })}
       </ul>
     </div>
   );
