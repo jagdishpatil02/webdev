@@ -1,2 +1,1 @@
-# webdevelopment
-The basic POC for web development skills
+Repo for learning webdev skills
