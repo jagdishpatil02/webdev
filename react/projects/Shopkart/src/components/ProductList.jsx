@@ -79,25 +79,25 @@ export const ProductList = () => {
       <h1 className="my-8 font-bold underline text-2xl text-center">
         Shopkart
       </h1>
-      <div className="flex">
-        <div className="w-1/4 px-4 py-4">
+      <div className="flex flex-col lg:flex-row relative">
+        <div className="lg:w-1/4 w-full px-4 py-4">
           <Categories sendCategories={sendCategories}></Categories>
         </div>
-        <div className="w-3/4 px-4 py-4">
+        <div className="lg:w-[70%] w-full px-4 py-4">
           <input
             type="text"
-            className="p-2 w-full border-1 border-black outline mx-4 my-2"
+            className="p-2 lg:w-[98%] w-[95%] border-1 border-black outline mx-4 my-2"
             placeholder="Search for Products..."
             value={serachProduct}
             onChange={(e) => getProductsFromSearch(e.target.value)}
           />
           <p className="mx-4 my-2">{productlist?.length} Product(s) found</p>
 
-          <div className="flex flex-wrap flex-row">
+          <div className="flex flex-wrap">
             {productlist &&
               productlist.length > 0 &&
               productlist.map((product, index) => (
-                <div className="w-1/3 p-4" key={index}>
+                <div className="w-full lg:w-1/3 p-4" key={index}>
                   {product.price > 50 && (
                     <p className="bg-black text-white absolute right-82 px-2 text-sm">
                       Free shipping
@@ -115,7 +115,6 @@ export const ProductList = () => {
                   </button>
                 </div>
               ))}
-
             {loader && (
               <div className="flex justify-center items-center w-full h-screen">
                 <Rings
@@ -131,9 +130,8 @@ export const ProductList = () => {
             )}
           </div>
         </div>
-        <div>
-          <Cart cartItems={cartData}></Cart>
-        </div>
+        <Cart cartItems={cartData}></Cart>
+        {/* Placeholder for cart, adjust width if needed */}
       </div>
     </div>
   );

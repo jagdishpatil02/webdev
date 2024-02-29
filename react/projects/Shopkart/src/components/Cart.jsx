@@ -35,11 +35,10 @@ export const Cart = ({ cartItems }) => {
   return (
     <>
       <div
-        className="bg-black p-2 text-white rounded    h-[50px] w-[50px] cursor-pointer sticky top-0"
+        className="bg-black p-2 text-white rounded    h-[50px] w-[50px] cursor-pointer right-0 top-0 lg:sticky absolute"
         onClick={toggleDrawer}
       >
         <FaCartArrowDown className="text-2xl" />
-
         <span className="absolute top-6 right-1 bg-white rounded-full text-black w-[20px] h-[20px] flex justify-center items-center">
           {cartItems?.length}
         </span>
@@ -48,8 +47,7 @@ export const Cart = ({ cartItems }) => {
         open={isOpen}
         onClose={toggleDrawer}
         direction="right"
-        className=" overflow-y-auto "
-        style={{ width: "650px" }}
+        className=" overflow-y-auto drawer-cart"
       >
         {productsWithQuantity &&
           productsWithQuantity.length > 0 &&
