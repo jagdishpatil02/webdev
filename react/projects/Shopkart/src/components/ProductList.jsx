@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Sizes } from "./Sizes";
 import { Categories } from "./Categories";
+import { Cart } from "./Cart";
 import { Rings } from "react-loader-spinner";
 
 export const ProductList = () => {
   const [productlist, setProductList] = useState();
   const [categoryId, setCategoryId] = useState();
   const [cartData, setCartData] = useState([]);
+  const [serachProduct, setProductSearch] = useState("");
+
   const [loader, setLoader] = useState(false);
 
   const sendCategories = (id) => {
@@ -38,14 +40,36 @@ export const ProductList = () => {
     setCartData((currentCart) => [...currentCart, product]);
   };
 
+  const getProductsFromSearch = async (product) => {
+    setProductSearch(product);
+    setLoader(true);
+
+    const data = await fetch(
+      `https://api.escuelajs.co/api/v1/products/?title=${product}`
+    );
+    const response = await data.json();
+    setProductList(response);
+    setLoader(false);
+  };
+
   return (
     <div>
+      <h1 className="my-8 font-bold underline text-2xl text-center">
+        Shopkart
+      </h1>
       <div className="flex">
-        <div className="w-1/4 px-4 py-16">
-          <Sizes sendCategories={sendCategories}></Sizes>
+        <div className="w-1/4 px-4 py-4">
+          <Categories sendCategories={sendCategories}></Categories>
         </div>
-        <div className="w-3/4 px-4 py-16">
-          <p className="mx-4">{productlist?.length} Product(s) found</p>
+        <div className="w-3/4 px-4 py-4">
+          <input
+            type="text"
+            className="p-2 w-full border-1 border-black outline mx-4 my-2"
+            placeholder="Search for Products..."
+            value={serachProduct}
+            onChange={(e) => getProductsFromSearch(e.target.value)}
+          />
+          <p className="mx-4 my-2">{productlist?.length} Product(s) found</p>
 
           <div className="flex flex-wrap flex-row">
             {productlist &&
@@ -58,6 +82,7 @@ export const ProductList = () => {
                     </p>
                   )}
                   <img src={product.images[0]} alt={product.title} />
+
                   <p className="min-h-[50px] my-2">{product.title}</p>
                   <p>${product.price}</p>
                   <button
@@ -85,7 +110,7 @@ export const ProductList = () => {
           </div>
         </div>
         <div>
-          <Categories cartItems={cartData}></Categories>
+          <Cart cartItems={cartData}></Cart>
         </div>
       </div>
     </div>
