@@ -51,7 +51,7 @@ export const Cart = ({ cartItems }) => {
       >
         <div
           onClick={toggleDrawer}
-          className="bg-black text-white  absolute w-[25px] h-[25px] text-center cursor-pointer"
+          className="bg-black text-white  absolute w-[25px] h-[25px] text-center cursor-pointer "
         >
           X
         </div>
@@ -59,7 +59,7 @@ export const Cart = ({ cartItems }) => {
           productsWithQuantity.length > 0 &&
           productsWithQuantity.map((product, index) => (
             <div
-              className="w-full p-4 border-bottom flex justify-between flex-row relative"
+              className="w-full p-4 border-bottom flex justify-between flex-row relative mt-8"
               key={index}
             >
               <img
