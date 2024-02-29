@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Sizes } from "./Sizes";
 import { Categories } from "./Categories";
+import { Rings } from "react-loader-spinner";
+
 export const ProductList = () => {
   const [productlist, setProductList] = useState();
   const [categoryId, setCategoryId] = useState();
   const [cartData, setCartData] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const sendCategories = (id) => {
     setCategoryId(id);
   };
 
   useEffect(() => {
+    setLoader(true);
+
     const fetchData = async () => {
       if (categoryId) {
         const data = await fetch(
@@ -18,10 +23,12 @@ export const ProductList = () => {
         );
         const response = await data.json();
         setProductList(response);
+        setLoader(false);
       } else {
         const data = await fetch("https://api.escuelajs.co/api/v1/products");
         const response = await data.json();
         setProductList(response);
+        setLoader(false);
       }
     };
     fetchData();
@@ -33,16 +40,23 @@ export const ProductList = () => {
 
   return (
     <div>
-      <div className="flex px-16 py-16">
-        <div className="w-1/4">
+      <div className="flex">
+        <div className="w-1/4 px-4 py-16">
           <Sizes sendCategories={sendCategories}></Sizes>
         </div>
-        <div className="w-3/4">
+        <div className="w-3/4 px-4 py-16">
+          <p className="mx-4">{productlist.length} Product(s) found</p>
+
           <div className="flex flex-wrap flex-row">
             {productlist &&
               productlist.length > 0 &&
               productlist.map((product, index) => (
                 <div className="w-1/3 p-4" key={index}>
+                  {product.price > 50 && (
+                    <p className="bg-black text-white absolute right-82 px-2 text-sm">
+                      Free shipping
+                    </p>
+                  )}
                   <img src={product.images[0]} alt={product.title} />
                   <p className="min-h-[50px] my-2">{product.title}</p>
                   <p>${product.price}</p>
@@ -54,6 +68,20 @@ export const ProductList = () => {
                   </button>
                 </div>
               ))}
+
+            {loader && (
+              <div className="flex justify-center items-center w-full h-screen">
+                <Rings
+                  visible={loader}
+                  height="80"
+                  width="80"
+                  color="#333"
+                  ariaLabel="rings-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>
+            )}
           </div>
         </div>
         <div>

@@ -7,6 +7,8 @@ export const Categories = ({ cartItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   let total = 0;
 
+  console.log(cartItems);
+
   const productsWithQuantity = cartItems.reduce((acc, product) => {
     const existingProduct = acc.find((item) => item.id === product.id);
     if (existingProduct) {
@@ -55,7 +57,7 @@ export const Categories = ({ cartItems }) => {
           productsWithQuantity.length > 0 &&
           productsWithQuantity.map((product, index) => (
             <div
-              className="w-full p-4 border-bottom flex justify-between flex-row"
+              className="w-full p-4 border-bottom flex justify-between flex-row relative"
               key={index}
             >
               <img
