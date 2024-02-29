@@ -47,8 +47,14 @@ export const Cart = ({ cartItems }) => {
         open={isOpen}
         onClose={toggleDrawer}
         direction="right"
-        className=" overflow-y-auto drawer-cart"
+        className=" overflow-y-auto drawer-cart relative"
       >
+        <div
+          onClick={toggleDrawer}
+          className="bg-black text-white  absolute w-[25px] h-[25px] text-center cursor-pointer"
+        >
+          X
+        </div>
         {productsWithQuantity &&
           productsWithQuantity.length > 0 &&
           productsWithQuantity.map((product, index) => (
