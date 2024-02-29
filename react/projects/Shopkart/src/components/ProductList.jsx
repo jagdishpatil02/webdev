@@ -45,7 +45,7 @@ export const ProductList = () => {
           <Sizes sendCategories={sendCategories}></Sizes>
         </div>
         <div className="w-3/4 px-4 py-16">
-          <p className="mx-4">{productlist.length} Product(s) found</p>
+          <p className="mx-4">{productlist?.length} Product(s) found</p>
 
           <div className="flex flex-wrap flex-row">
             {productlist &&
