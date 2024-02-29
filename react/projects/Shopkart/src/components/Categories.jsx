@@ -5,9 +5,16 @@ export const Categories = ({ sendCategories }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const data = await fetch("https://api.escuelajs.co/api/v1/categories");
-      const response = await data.json();
-      setCategories(response);
+      try {
+        const data = await fetch("https://api.escuelajs.co/api/v1/categories");
+        const response = await data.json();
+        setCategories(response);
+      } catch (error) {
+        // Handle the error gracefully
+        console.error("Error fetching data:", error);
+        // Optionally, you can set some default or empty value for categories
+        setCategories([]);
+      }
     };
     fetchCategories();
   }, []);

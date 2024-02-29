@@ -20,16 +20,31 @@ export const ProductList = () => {
 
     const fetchData = async () => {
       if (categoryId) {
-        const data = await fetch(
-          `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`
-        );
-        const response = await data.json();
-        setProductList(response);
+        try {
+          const data = await fetch(
+            `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`
+          );
+          const response = await data.json();
+          setProductList(response);
+        } catch (error) {
+          // Handle the error gracefully
+          console.error("Error fetching data:", error);
+          // Optionally, you can set some default or empty value for productList
+          setProductList([]);
+        }
+
         setLoader(false);
       } else {
-        const data = await fetch("https://api.escuelajs.co/api/v1/products");
-        const response = await data.json();
-        setProductList(response);
+        try {
+          const data = await fetch("https://api.escuelajs.co/api/v1/products");
+          const response = await data.json();
+          setProductList(response);
+        } catch (error) {
+          // Handle the error gracefully
+          console.error("Error fetching data:", error);
+          // Optionally, you can set some default or empty value for productList
+          setProductList([]);
+        }
         setLoader(false);
       }
     };
@@ -43,12 +58,19 @@ export const ProductList = () => {
   const getProductsFromSearch = async (product) => {
     setProductSearch(product);
     setLoader(true);
+    try {
+      const data = await fetch(
+        `https://api.escuelajs.co/api/v1/products/?title=${product}`
+      );
+      const response = await data.json();
+      setProductList(response);
+    } catch (error) {
+      // Handle the error gracefully
+      console.error("Error fetching data:", error);
+      // Optionally, you can set some default or empty value for productList
+      setProductList([]);
+    }
 
-    const data = await fetch(
-      `https://api.escuelajs.co/api/v1/products/?title=${product}`
-    );
-    const response = await data.json();
-    setProductList(response);
     setLoader(false);
   };
 
