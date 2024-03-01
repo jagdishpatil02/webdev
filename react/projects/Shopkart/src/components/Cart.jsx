@@ -5,6 +5,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 export const Cart = ({ cartItems }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   let total = 0;
 
   const productsWithQuantity = cartItems.reduce((acc, product) => {

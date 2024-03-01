@@ -83,15 +83,17 @@ export const ProductList = () => {
         <div className="lg:w-1/4 w-full px-4 py-4">
           <Categories sendCategories={sendCategories}></Categories>
         </div>
-        <div className="lg:w-[70%] w-full px-4 py-4">
+        <div className="lg:w-[72%] w-full px-4 py-4">
           <input
             type="text"
-            className="p-2 lg:w-[98%] w-[95%] border-1 border-black outline mx-4 my-2"
+            className="p-2 lg:w-[97%] w-[95%] border-1 border-black outline mx-4 my-2"
             placeholder="Search for Products..."
             value={serachProduct}
             onChange={(e) => getProductsFromSearch(e.target.value)}
           />
-          <p className="mx-4 my-2">{productlist?.length} Product(s) found</p>
+          <p className="mx-4 my-2 font-medium">
+            {productlist?.length} Product(s) found
+          </p>
 
           <div className="flex flex-wrap">
             {productlist &&

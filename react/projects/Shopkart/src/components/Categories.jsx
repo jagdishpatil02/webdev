@@ -22,7 +22,14 @@ export const Categories = ({ sendCategories }) => {
   return (
     <div>
       <p className="text-black font-medium  px-2">Categories:</p>
+
       <div className="flex flex-wrap flex-row">
+        <button
+          className="bg-black px-2 text-white rounded-full mx-2 mt-4 text-center"
+          onClick={() => sendCategories("")}
+        >
+          All
+        </button>
         {categories &&
           categories?.map((category, index) => (
             <div
