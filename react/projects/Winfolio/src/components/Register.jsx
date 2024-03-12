@@ -3,12 +3,13 @@ import { createClient } from '@supabase/supabase-js';
 import { SUPABASE_URL, ANON_KEY } from '../Auth/keys';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+import { OuterHeader } from './OuterHeader';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const supabase = createClient(SUPABASE_URL, ANON_KEY);
+  const [loading, isLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -31,30 +32,40 @@ const Register = () => {
           'Password and Confirm Password must match'
         ),
     }),
-
-    // submit form
-
-    onSubmit: (values) => {
-      console.log(values);
-    },
   });
 
   const registerHandle = async (e) => {
     e.preventDefault();
-    // try {
-    //   const { data, error } = await supabase.auth.signUp({
-    //     email: formik.values.email,
-    //     password: formik.values.password,
-    //   });
-    //   console.log(data, error);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+
+    if (Object.keys(formik.errors).length == 0) {
+      isLoading(true);
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email: formik.values.email,
+          password: formik.values.password,
+        });
+        if (error) {
+          toast.error(error.message);
+        }
+        if (data?.user?.aud) {
+          toast.success(
+            'Account Created Sucesssfully, Please check mailbox to verify email your address'
+          );
+        }
+      } catch (error) {
+        isLoading(false);
+        toast.error(error);
+      } finally {
+        isLoading(false);
+      }
+    }
   };
+
   console.log(formik.errors);
 
   return (
-    <div>
+    <div className='py-16 '>
+      <OuterHeader></OuterHeader>
       <div className='flex items-left justify-center  '>
         <div className='bg-white px-8 py-6 rounded-lg shadow-md w-full max-w-md  border-2 text-left'>
           <h2 className='text-2xl text-center font-bold mb-6'>Signup</h2>
@@ -123,15 +134,26 @@ const Register = () => {
             </div>
 
             <button
+              disabled={loading}
               type='submit'
               id='submitButton'
               className='bg-black 0 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 flex justify-end items-end'
             >
               Register
             </button>
+            <p className='mt-2'>
+              Already have an account?
+              <Link
+                to='/login'
+                className='pl-2 text-blue-500 underline cursor-pointer '
+              >
+                Login
+              </Link>
+            </p>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
