@@ -1,18 +1,15 @@
-import { supabase } from '@supabase/auth-ui-shared';
 import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 import { ANON_KEY, SUPABASE_URL } from '../Auth/keys';
-import { data } from 'autoprefixer';
-import { parse, format } from 'date-fns';
 import { ToastContainer, toast } from 'react-toastify';
+import html2canvas from 'html2canvas';
 
 const Achievements = () => {
   const [achievementsData, setAchievementsData] = useState();
   const supabase = createClient(SUPABASE_URL, ANON_KEY);
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
-
-  const currentYear = new Date().getFullYear();
+  const [achievementBox, setachievementBox] = useState(false);
 
   const months = [
     { value: 0, label: 'Select Month' },
@@ -29,6 +26,22 @@ const Achievements = () => {
     { value: 11, label: 'November' },
     { value: 12, label: 'December' },
   ];
+
+  const downloadHandle = () => {
+    const element = document.getElementById('achievements');
+
+    html2canvas(element)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'achievement.png';
+        link.click();
+      })
+      .catch((error) => {
+        console.error('Error creating image:', error);
+      });
+  };
 
   // This function is called whenever the selected year or month changes
 
@@ -51,6 +64,9 @@ const Achievements = () => {
 
         if (data && data.length == 0) {
           toast.info('No achievements found');
+          setachievementBox(false);
+        } else {
+          setachievementBox(true);
         }
       };
 
@@ -75,18 +91,48 @@ const Achievements = () => {
         ))}
       </select>
 
-      <div className='achievement-box p-4 rounded-lg shadow-md bg-[#b4ffc0] flex items-center justify-center flex-col mt-5'>
-        <h3 className='text-2xl font-semibold mb-2 '>My Achievements</h3>
-        <ul className='list-disc space-y-2'>
-          {achievementsData &&
-            achievementsData.length > 0 &&
-            achievementsData.map((achievement, index) => (
-              <li key={index}>
-                <p>{achievement.achievement_name}</p>
-              </li>
-            ))}
-        </ul>
-      </div>
+      {achievementBox && (
+        <>
+          {' '}
+          <div
+            style={{
+              display: 'flex',
+              padding: '1rem',
+              marginTop: '1.25rem',
+              flexDirection: 'column',
+              alignItems: 'center',
+              borderWidth: '1px',
+              backgroundColor: '#ffffff',
+              minHeight: '250px',
+            }}
+            id='achievements'
+          >
+            <h3 className='text-2xl font-semibold mb-2 '>
+              ✨ My Achievements ✨
+            </h3>
+            <ol style={{ listStyleType: 'none', lineHeight: '30px' }}>
+              {achievementsData &&
+                achievementsData.length > 0 &&
+                achievementsData.map((achievement, index) => (
+                  <li key={index}>
+                    <p>
+                      {index + 1}. {achievement.achievement_name}
+                    </p>
+                  </li>
+                ))}
+            </ol>
+          </div>
+          <div className='flex justify-end my-2'>
+            <button
+              onClick={downloadHandle}
+              type='submit'
+              className='bg-black 0 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 flex justify-end items-end cursor-pointer'
+            >
+              Download
+            </button>
+          </div>
+        </>
+      )}
 
       <ToastContainer />
     </div>

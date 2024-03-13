@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_URL, ANON_KEY } from '../Auth/keys';
-import { Link, useNavigate } from 'react-router-dom';
-import { Formik, useFormik } from 'formik';
-import * as Yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
-import Register from './Register';
 import { OuterHeader } from './OuterHeader';
-const Login = () => {
-  const navigate = useNavigate();
-  const [loading, isLoading] = useState(false);
+import { useFormik } from 'formik';
+import { SUPABASE_URL, ANON_KEY } from '../Auth/keys';
+import * as Yup from 'yup';
+import { createClient } from '@supabase/supabase-js';
+import { useLocation } from 'react-router-dom';
 
+const ChangePassword = () => {
+  const supabase = createClient(SUPABASE_URL, ANON_KEY);
+  const [loading, isLoading] = useState(false);
+  const location = useLocation();
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
+      confirmPassword: '',
     },
 
     // validate form
@@ -23,51 +24,36 @@ const Login = () => {
         .email('Invalid email address')
         .required('Email is required'),
       password: Yup.string().required('Enter your password'),
+      confirmPassword: Yup.string()
+        .required('Enter confirm password')
+        .oneOf(
+          [Yup.ref('password'), null],
+          'Password and Confirm Password must match'
+        ),
     }),
   });
-  const supabase = createClient(SUPABASE_URL, ANON_KEY);
 
-  const loginHandle = async (e) => {
+  const ChangePasswordHandle = async (e) => {
     e.preventDefault();
 
-    if (Object.keys(formik.errors).length == 0) {
-      try {
-        isLoading(true);
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: formik.values.email,
-          password: formik.values.password,
-        });
-        if (data?.user?.role == 'authenticated') {
-          console.log(data?.user);
-          localStorage.setItem('authenticated', true);
-          localStorage.setItem('userId', data.user.id);
-          localStorage.setItem('email', data.user.email);
-          navigate('/home');
-        }
+    const { data, error } = await supabase.auth.updateUser({
+      email: formik.values.email,
+      password: formik.values.confirmPassword,
+    });
 
-        if (error) {
-          toast.error(error?.message);
-        }
-      } catch (error) {
-        isLoading(false);
-        localStorage.setItem('authenticated', false);
-      } finally {
-        isLoading(false);
-      }
+    if (error) {
+      toast.error(error.message);
     }
   };
-
-  const gotoRegister = (route) => {
-    navigate(route);
-  };
-
   return (
-    <div className=' py-16'>
+    <div className='py-16 '>
       <OuterHeader></OuterHeader>
-      <div className='flex items-center justify-center '>
+      <div className='flex items-left justify-center  '>
         <div className='bg-white px-8 py-6 rounded-lg shadow-md w-full max-w-md  border-2 text-left'>
-          <h2 className='text-2xl text-center font-bold mb-6'>Login</h2>
-          <form id='registerhtmlForm' onSubmit={loginHandle}>
+          <h2 className='text-2xl text-center font-bold mb-6'>
+            Change Password
+          </h2>
+          <form id='changePasswordForm' onSubmit={ChangePasswordHandle}>
             <div className='mb-4'>
               <label
                 htmlFor='email'
@@ -97,50 +83,50 @@ const Login = () => {
                 Password
               </label>
               <input
+                value={formik.values.password}
                 type='password'
                 id='password'
                 name='password'
-                value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-                required
               />
-
-              {/* <a className='text-blue-500 underline cursor-pointer block text-right text-sm'>
-                Forgot Password?
-              </a> */}
               <span id='passwordError' className='text-red-500 text-sm '>
                 {' '}
                 {formik.touched.password && formik.errors.password}
               </span>
-              <Link
-                to='/reset-password'
-                className='pl-2 text-blue-500 underline cursor-pointer  text-right block text-sm'
+            </div>
+            <div className='mb-6'>
+              <label
+                htmlFor='confirmPassword'
+                className='block text-gray-700 text-sm font-bold mb-2 text-left'
               >
-                Forgot Password?
-              </Link>
+                Confirm Password
+              </label>
+              <input
+                type='password'
+                id='confirmPassword'
+                name='confirmPassword'
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+              />
+              <span id='confirmPasswordError' className='text-red-500 text-sm '>
+                {formik.touched.confirmPassword &&
+                  formik.errors.confirmPassword}
+              </span>
             </div>
 
             <button
-              disabled={loading}
-              onClick={loginHandle}
+              onClick={ChangePasswordHandle}
               type='submit'
               id='submitButton'
               className='bg-black 0 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 flex justify-end items-end'
             >
-              Login
+              Change Password
             </button>
           </form>
-          <p className='mt-2'>
-            Don&apos;t have an account yet?{' '}
-            <a
-              className='text-blue-500 underline cursor-pointer block'
-              onClick={() => gotoRegister('/register')}
-            >
-              Click here to create one.
-            </a>
-          </p>
         </div>
       </div>
       <ToastContainer />
@@ -148,4 +134,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ChangePassword;

@@ -30,7 +30,7 @@ const Header = () => {
         </span>
       </Navbar.Brand>
       <Navbar.Toggle />
-      <div className='px-8'>
+      <div className='px-8 navbar'>
         <Navbar.Collapse>
           <Navbar.Link className='text-white' onClick={() => gotoHome('/home')}>
             Home
@@ -41,7 +41,7 @@ const Header = () => {
           >
             Show Achievements
           </Navbar.Link>
-          <Dropdown label='User  ' inline>
+          <Dropdown label='User  ' inline className='signoutBtn'>
             <Dropdown.Item onClick={() => signout()}>Sign out</Dropdown.Item>
           </Dropdown>
         </Navbar.Collapse>

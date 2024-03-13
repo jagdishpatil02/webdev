@@ -12,3 +12,16 @@ button:disabled{
     pointer-events: none;
     opacity: 0.5;
 }
+
+.navbar a:hover{
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.achievement-box{
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, .13), 0 1px 4px 0 rgba(0, 0, 0, .11);
+}
+
+.signoutBtn{
+  left: -40px !important;
+}

@@ -9,6 +9,8 @@ const Login = lazy(() => import('./components/Login'));
 const Register = lazy(() => import('./components/Register'));
 const ShowAchievements = lazy(() => import('./components/Achievements'));
 const VerifyEmail = lazy(() => import('./components/Verifyemail'));
+const ForgotPassword = lazy(() => import('./components/ResetPassword'));
+const ChangePassword = lazy(() => import('./components/ChangePassword'));
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
             </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/reset-password' element={<ForgotPassword />} />
+            <Route path='/change-password' element={<ChangePassword />} />
           </Routes>
         </Suspense>
       </Router>

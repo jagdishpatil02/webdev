@@ -8,7 +8,7 @@ const Verifyemail = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate('/login');
-    }, 2000);
+    }, 3000);
   }, []);
 
   return (
