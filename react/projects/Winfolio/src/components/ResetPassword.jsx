@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { createClient } from '@supabase/supabase-js';
 import { ANON_KEY, SUPABASE_URL } from '../Auth/keys';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const ResetPassword = () => {
   const supabase = createClient(SUPABASE_URL, ANON_KEY);

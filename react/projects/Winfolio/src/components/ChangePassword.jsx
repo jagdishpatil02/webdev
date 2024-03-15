@@ -5,12 +5,20 @@ import { useFormik } from "formik";
 import { SUPABASE_URL, ANON_KEY } from "../Auth/keys";
 import * as Yup from "yup";
 import { createClient } from "@supabase/supabase-js";
-import { useLocation } from "react-router-dom";
 
 const ChangePassword = () => {
   const supabase = createClient(SUPABASE_URL, ANON_KEY);
   const [loading, isLoading] = useState(false);
-  const location = useLocation();
+
+  const [searchParams, setSearchParams] = useState(" ");
+  useEffect(() => {
+    const url = window.location.href;
+    const params = new URLSearchParams(url.split("#")[1]);
+    const accessToken = params.get("access_token");
+    console.log(accessToken);
+    setSearchParams(accessToken);
+  }, [searchParams]);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -35,14 +43,36 @@ const ChangePassword = () => {
 
   const ChangePasswordHandle = async (e) => {
     e.preventDefault();
+    isLoading(true);
+    if (searchParams == null) {
+      isLoading(false);
 
-    const { data, error } = await supabase.auth.updateUser({
-      email: formik.values.email,
-      password: formik.values.confirmPassword,
-    });
+      toast.error("Your password link has been expired, Please try again");
+      return false;
+    }
+    console.log("searhpara", searchParams);
+
+    const { data, error } = await supabase.auth.refreshSession();
 
     if (error) {
       toast.error(error.message);
+    }
+
+    const { data: userData, error: userError } = await supabase.auth.updateUser(
+      {
+        email: formik.values.email,
+        password: formik.values.confirmPassword,
+      }
+    );
+
+    if (userError) {
+      isLoading(false);
+
+      toast.error(userError.message);
+    } else {
+      isLoading(false);
+
+      toast.success("Password updated successfully!");
     }
   };
   return (
@@ -119,6 +149,7 @@ const ChangePassword = () => {
             </div>
 
             <button
+              disabled={loading}
               onClick={ChangePasswordHandle}
               type="submit"
               id="submitButton"
