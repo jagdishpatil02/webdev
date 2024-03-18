@@ -13,8 +13,8 @@ const Header = () => {
   const [name, userName] = useState("");
 
   useEffect(() => {
-    let firstName = localStorage.getItem("fistname");
-    userName(firstName);
+    let firstName = localStorage.getItem("firstName");
+    firstName == "undefined" ? userName("User") : userName(firstName);
   }, []);
 
   const signout = () => {

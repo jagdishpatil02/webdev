@@ -42,7 +42,7 @@ const Login = () => {
           localStorage.setItem("authenticated", true);
           localStorage.setItem("userId", data.user.id);
           localStorage.setItem("email", data.user.email);
-          localStorage.setItem("fistname", data.user.user_metadata.first_name);
+          localStorage.setItem("firstName", data.user.user_metadata.first_name);
 
           navigate("/home");
         }
