@@ -79,7 +79,7 @@ const ChangePassword = () => {
     <div className="py-16 ">
       <OuterHeader></OuterHeader>
       <div className="flex items-left justify-center  ">
-        <div className="bg-white px-8 py-6 rounded-lg shadow-md w-full max-w-md  border-2 text-left">
+        <div className="bg-white px-8 py-6 rounded-lg shadow-md w-full max-w-md  border-2 text-left mx-4">
           <h2 className="text-2xl text-center font-bold mb-6">
             Change Password
           </h2>

@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { Navbar } from "flowbite-react";
+import { Avatar, Navbar } from "flowbite-react";
 import { Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { ANON_KEY, SUPABASE_URL } from "../Auth/keys";
@@ -30,15 +30,20 @@ const Header = () => {
     navigate("/home");
   };
   return (
-    <Navbar className="bg-black text-white">
-      <Navbar.Brand>
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Winfolio
-        </span>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-      <div className="px-8 navbar">
-        <Navbar.Collapse>
+    <>
+      <Navbar fluid className="bg-black text-white">
+        <Navbar.Brand>
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white pl-2">
+            Winfolio
+          </span>
+        </Navbar.Brand>
+        <div className="flex md:order-2">
+          <Dropdown label={name} inline className="signoutBtn">
+            <Dropdown.Item onClick={() => signout()}>Sign out</Dropdown.Item>
+          </Dropdown>
+          <Navbar.Toggle />
+        </div>
+        <Navbar.Collapse className="navbar">
           <Navbar.Link className="text-white" onClick={() => gotoHome("/home")}>
             Home
           </Navbar.Link>
@@ -48,12 +53,36 @@ const Header = () => {
           >
             Show Achievements
           </Navbar.Link>
-          <Dropdown label={name} inline className="signoutBtn">
-            <Dropdown.Item onClick={() => signout()}>Sign out</Dropdown.Item>
-          </Dropdown>
         </Navbar.Collapse>
-      </div>
-    </Navbar>
+      </Navbar>
+      {/* <Navbar className="bg-black text-white ">
+        <Navbar.Brand>
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white pl-2">
+            Winfolio
+          </span>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <div className="px-8 navbar">
+          <Navbar.Collapse>
+            <Navbar.Link
+              className="text-white"
+              onClick={() => gotoHome("/home")}
+            >
+              Home
+            </Navbar.Link>
+            <Navbar.Link
+              className="text-white"
+              onClick={() => gotoShowAchievements("/register")}
+            >
+              Show Achievements
+            </Navbar.Link>
+            <Dropdown label={name} inline className="signoutBtn">
+              <Dropdown.Item onClick={() => signout()}>Sign out</Dropdown.Item>
+            </Dropdown>
+          </Navbar.Collapse>
+        </div>
+      </Navbar> */}
+    </>
   );
 };
 

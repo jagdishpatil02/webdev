@@ -50,7 +50,7 @@ const Achievements = () => {
       const userId = localStorage.getItem("userId");
 
       const fetchAchivements = async () => {
-        const startDate = new Date(`\${year}-\${month}-01`).toISOString();
+        const startDate = new Date(`${year}-${month}-01`).toISOString();
         const endDate = new Date(year, month, 0).toISOString(); // Last day of selected month
 
         const { data, error } = await supabase
@@ -75,21 +75,23 @@ const Achievements = () => {
   }, [year, month]);
 
   return (
-    <div className="px-11 my-8">
-      <select onChange={(e) => setYear(e.target.value)}>
-        <option>Select Year</option>
-        <option>2024</option>
-        <option>2023</option>
-        <option>2022</option>
-        <option>2021</option>
-      </select>
-      <select onChange={(e) => setMonth(e.target.value)} className="mx-4">
-        {months.map((month) => (
-          <option key={month.value} value={month.value}>
-            {month.label}
-          </option>
-        ))}
-      </select>
+    <div className="px-7 my-8">
+      <div className="w-full flex">
+        <select onChange={(e) => setYear(e.target.value)}>
+          <option>Select Year</option>
+          <option>2024</option>
+          <option>2023</option>
+          <option>2022</option>
+          <option>2021</option>
+        </select>
+        <select onChange={(e) => setMonth(e.target.value)} className="mx-4">
+          {months.map((month) => (
+            <option key={month.value} value={month.value}>
+              {month.label}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {achievementBox && (
         <>
