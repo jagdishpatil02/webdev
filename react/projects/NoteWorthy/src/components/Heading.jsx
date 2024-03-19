@@ -1,12 +1,12 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { ClearContext } from '../context/ClearContext';
+import { useContext, useEffect, useRef, useState } from "react";
+import { ClearContext } from "../context/ClearContext";
 
 export const Heading = () => {
   const { clearData } = useContext(ClearContext);
 
-  const [heading, setHeading] = useState('Title');
+  const [heading, setHeading] = useState("Title");
   useEffect(() => {
-    setHeading('Title');
+    setHeading("Title");
   }, [clearData]);
 
   const headingRef = useRef();
@@ -22,7 +22,7 @@ export const Heading = () => {
   }, [heading]);
 
   useEffect(() => {
-    let getheading = window.localStorage.getItem('heading');
+    let getheading = window.localStorage.getItem("heading");
     if (getheading) {
       setHeading(getheading);
     }
@@ -30,20 +30,20 @@ export const Heading = () => {
 
   const handleHeading = (e) => {
     setHeading((prevValue) => {
-      if (prevValue == 'Title') {
-        setHeading('');
+      if (prevValue == "Title") {
+        setHeading("");
       } else {
         setHeading(e.target.innerHTML);
       }
     });
-    window.localStorage.setItem('heading', e.target.innerHTML);
+    window.localStorage.setItem("heading", e.target.innerHTML);
   };
 
   return (
     <div
       ref={headingRef}
-      contentEditable='true'
-      className='w-full h-[2vh] text-left outline-0 text-2xl'
+      contentEditable="true"
+      className="w-full h-[2vh] text-left outline-0 text-2xl ml-2"
       onInput={handleHeading}
       dangerouslySetInnerHTML={{ __html: heading }}
     ></div>

@@ -12,44 +12,59 @@ import { MdOutlineFormatListNumbered } from "react-icons/md";
 import { BsBlockquoteLeft } from "react-icons/bs";
 import { FaCode } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
+import { MdFormatBold, MdFormatItalic, MdStrikethroughS } from "react-icons/md";
 
 const Pad = () => {
   const [clearData, setClearData] = useState(false);
+  const [bold, setBold] = useState(false);
+  const [italic, setItalic] = useState(false);
+  const [strike, setStrike] = useState(false);
+  const [heading, setHeading] = useState(false);
+  const [divider, setDividerHandle] = useState(false);
+  const [ulList, setUlList] = useState(false);
+  const [olList, setOlList] = useState(false);
+  const [blockquote, setBlockQuote] = useState(false);
+  const [code, setCode] = useState(false);
+
   const descriptionRef = useRef();
 
   const fontBoldHandle = () => {
+    setBold(!bold);
     document.execCommand("bold", false, null);
   };
 
   const fontItalicHandle = () => {
+    setItalic(!italic);
     document.execCommand("italic", false, null);
   };
 
   const fontStrikeThrough = () => {
+    setStrike(!strike);
     document.execCommand("strikethrough", false, null);
   };
 
-  const fontLargeBold = () => {
-    document.execCommand("formatBlock", false, "h1");
-  };
-
   const fontLarge = () => {
+    setHeading(!heading);
     document.execCommand("formatBlock", false, "h2");
   };
 
   const dividerHandle = () => {
+    setDividerHandle(!divider);
     document.execCommand("insertHTML", false, "<hr>");
   };
 
   const bulletListHandle = () => {
+    setUlList(!ulList);
     document.execCommand("insertUnorderedList", false, null);
   };
 
   const numberListHandle = () => {
+    setOlList(!olList);
     document.execCommand("insertorderedList", false, null);
   };
 
   const blockQuoteHandle = () => {
+    setBlockQuote(!blockquote);
     const selection = window.getSelection();
     const block = selection.anchorNode.parentNode;
 
@@ -63,6 +78,7 @@ const Pad = () => {
   };
 
   const codeHandle = (e) => {
+    setCode(!code);
     document.execCommand(
       "insertHTML",
       false,
@@ -71,6 +87,16 @@ const Pad = () => {
   };
 
   const deleteNote = () => {
+    setBold(false);
+    setItalic(false);
+    setStrike(false);
+    setHeading(false);
+    setDividerHandle(false);
+    setUlList(false);
+    setOlList(false);
+    setBlockQuote(false);
+    setCode(false);
+
     localStorage.clear();
     setClearData((prev) => !prev);
   };
@@ -93,6 +119,16 @@ const Pad = () => {
     element.click();
   };
 
+  const boldbuttonClass = ` text-[#757575] p-2 ${bold ? "active" : ""}`;
+  const italicbuttonClass = ` text-[#757575] p-2  ${italic ? "active" : ""}`;
+  const strikeButtonClass = ` text-[#757575] p-2  ${strike ? "active" : ""}`;
+  const headingButtonClass = ` text-[#757575] p-2 ${heading ? "active" : ""}`;
+  const divideButtonClass = ` text-[#757575] p-2 ${divider ? "active" : ""}`;
+  const ulButtonClass = ` text-[#757575] p-2 ${ulList ? "active" : ""}`;
+  const olButtonClass = ` text-[#757575] p-2  ${olList ? "active" : ""}`;
+  const blockButtonClass = ` text-[#757575] p-2 ${blockquote ? "active" : ""}`;
+  const codeButtonClass = ` text-[#757575] p-2 ${code ? "active" : ""}`;
+
   return (
     <>
       <div className="flex lg:flex-row flex-col">
@@ -107,57 +143,39 @@ const Pad = () => {
               <Heading></Heading>
             </div>
             <div className="text-left">
-              <button onClick={fontBoldHandle} className="mr-4 text-[#757575]">
-                <FaBold className="text-xl" />
+              <button onClick={fontBoldHandle} className={boldbuttonClass}>
+                <MdFormatBold className="text-2xl" />
               </button>
-              <button
-                onClick={fontItalicHandle}
-                className="mr-4 text-[#757575]"
-              >
-                <FaItalic className="text-xl" />
+              <button className={italicbuttonClass} onClick={fontItalicHandle}>
+                <MdFormatItalic className="text-2xl" />
               </button>
-              <button
-                onClick={fontStrikeThrough}
-                className="mr-4 text-[#757575]"
-              >
-                <FaStrikethrough className="text-xl" />
+              <button className={strikeButtonClass} onClick={fontStrikeThrough}>
+                <MdStrikethroughS className="text-2xl" />
               </button>
 
-              <button onClick={fontLargeBold} className="mr-4 text-[#757575]">
-                <FaHeading className="text-xl" />
+              <button onClick={fontLarge} className={headingButtonClass}>
+                <LuHeading2 className="text-2xl relative " />
               </button>
-              <button onClick={fontLarge} className="mr-4 text-[#757575]">
-                <LuHeading2 className="text-3xl relative top-[5px]" />
+              <button onClick={dividerHandle} className={divideButtonClass}>
+                <RxDividerHorizontal className="text-2xl  relative " />
               </button>
-              <button onClick={dividerHandle} className="mr-4 text-[#757575]">
-                <RxDividerHorizontal className="text-3xl relative top-[5px]" />
+              <button onClick={bulletListHandle} className={ulButtonClass}>
+                <PiListBullets className="text-2xl relative " />
               </button>
-              <button
-                onClick={bulletListHandle}
-                className="mr-4 text-[#757575]"
-              >
-                <PiListBullets className="text-3xl relative top-[5px]" />
+              <button onClick={numberListHandle} className={olButtonClass}>
+                <MdOutlineFormatListNumbered className="text-2xl relative " />
               </button>
-              <button
-                onClick={numberListHandle}
-                className="mr-4 text-[#757575]"
-              >
-                <MdOutlineFormatListNumbered className="text-3xl relative top-[5px]" />
+              <button onClick={blockQuoteHandle} className={blockButtonClass}>
+                <BsBlockquoteLeft className="text-2xl relative " />
               </button>
-              <button
-                onClick={blockQuoteHandle}
-                className="mr-4 text-[#757575]"
-              >
-                <BsBlockquoteLeft className="text-3xl relative top-[5px]" />
+              <button onClick={codeHandle} className={codeButtonClass}>
+                <FaCode className="text-2xl relative " />
               </button>
-              <button onClick={codeHandle} className="mr-4 text-[#757575]">
-                <FaCode className="text-3xl relative top-[5px]" />
+              <button onClick={deleteNote} className="mx-2 text-[#757575]">
+                <MdDelete className="text-2xl" />
               </button>
-              <button onClick={deleteNote} className="mr-4 text-[#757575]">
-                <MdDelete className="text-xl" />
-              </button>
-              <button onClick={downloadNote} className="mr-4 text-[#757575]">
-                <IoMdDownload className="text-xl" />
+              <button onClick={downloadNote} className="mx-2 text-[#757575]">
+                <IoMdDownload className="text-2xl" />
               </button>
             </div>
             <Description ref={descriptionRef}></Description>

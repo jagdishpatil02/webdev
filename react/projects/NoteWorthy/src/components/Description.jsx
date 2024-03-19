@@ -51,7 +51,7 @@ export const Description = forwardRef((props, ref) => {
     <div
       ref={noteRef}
       contentEditable="true"
-      className=" w-full h-[70vh]  text-left outline-0 mt-4 "
+      className=" w-full h-[70vh]  text-left outline-0 mt-4 ml-3.5"
       onInput={handleNote}
       dangerouslySetInnerHTML={{ __html: content }}
     ></div>
