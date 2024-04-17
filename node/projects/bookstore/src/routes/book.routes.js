@@ -18,19 +18,19 @@ import {
 
 const router = Router();
 
-router.route("/addBook").post(addBookHandler);
-router.route("/getBook").get(getBookHandler);
-router.route("/deleteBookbyId").put(deleteBookHandler);
-router.route("/updateBookbyId").delete(updateBookHandler);
-router.route("/searchBook").get(searchBookHandler);
-router.route("/getBooks").get(getAllBooksHandler);
-router.route("/getBooksFromCategoryId").get(getAllBooksFromCategory);
+router.route("/addbook").post(addBookHandler);
+router.route("/getbook").get(getBookHandler);
+router.route("/deletebook").put(deleteBookHandler);
+router.route("/updatebook").delete(updateBookHandler);
+router.route("/searchbook").get(searchBookHandler);
+router.route("/getbooks").get(getAllBooksHandler);
+router.route("/getbooksByCategory").get(getAllBooksFromCategory);
 
 // categories
-router.route("/createCategory").post(createCategory);
+router.route("/addCategory").post(createCategory);
 router.route("/getCategories").get(getAllCategories);
-router.route("/getCategoriesbyId").get(getCategoryById);
-router.route("/updateCategorybyId").put(updateCategoryById);
-router.route("/deleteCategorybyId").delete(deleteCategoryById);
+router.route("/getCategory").get(getCategoryById);
+router.route("/updateCategory").put(updateCategoryById);
+router.route("/deleteCategory").delete(deleteCategoryById);
 
 export default router;
