@@ -1,1 +1,1 @@
-export const DB_NAME = 'RandomQuoteGenerator';
+export const DB_NAME = "randomquotegenerator";

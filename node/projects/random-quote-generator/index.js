@@ -17,5 +17,5 @@ connectDB()
   });
 
 app.get("/", (req, res) => {
-  res.send("random quote generator api");
+  res.send("random quote generator apis");
 });
