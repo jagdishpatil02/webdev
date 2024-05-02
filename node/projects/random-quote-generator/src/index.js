@@ -8,19 +8,6 @@ dotenv.config({
   path: "./env",
 });
 
-connectDB()
-  .then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-      console.log(`server is running at ${8000}`);
-    });
-  })
-  .catch((err) => {
-    console.log("mongodb connection failed", err);
-  });
-app.get("/", (req, res) => {
-  res.send("random quote generator api");
-});
-
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
@@ -49,3 +36,12 @@ import randomQuoteRouter from "./router/quote.route.js";
 // routes declaration
 
 app.use("/api/v1/quote", randomQuoteRouter);
+
+app.get("/", (req, res) => {
+  res.send("random quote generator api");
+});
+
+connectDB();
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`server is running at ${8000}`);
+});
