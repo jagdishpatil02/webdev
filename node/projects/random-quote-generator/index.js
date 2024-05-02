@@ -1,4 +1,4 @@
-import connectDB from "./db/index.js";
+// import connectDB from "./index";
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
@@ -32,7 +32,7 @@ app.use(
 
 // routes import
 
-import randomQuoteRouter from "./router/quote.route.js";
+import randomQuoteRouter from "./src/router/quote.route.js";
 // routes declaration
 
 app.use("/api/v1/quote", randomQuoteRouter);
