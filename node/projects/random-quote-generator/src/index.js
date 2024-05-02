@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.send("random quote generator api");
 });
 
-connectDB();
+// connectDB();
 app.listen(process.env.PORT || 8000, () => {
   console.log(`server is running at ${8000}`);
 });
