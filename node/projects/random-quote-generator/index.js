@@ -15,7 +15,3 @@ connectDB()
   .catch((err) => {
     console.log("mongodb connection failed", err);
   });
-
-app.get("/", (req, res) => {
-  res.send("random quote generator apis");
-});
