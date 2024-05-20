@@ -90,7 +90,7 @@ const deleteCategoryById = asyncHandler(async (req, res) => {
 const getAllBooksFromCategory = asyncHandler(async (req, res) => {
   const categoryId = req.query.categoryId;
   // Use the correct Mongoose method to find the book
-  const book = await Book.findOne({ category: categoryId });
+  const book = await Book.find({ category: categoryId });
   if (!book) {
     return res
       .status(404)
