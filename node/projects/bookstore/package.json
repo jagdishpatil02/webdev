@@ -1,9 +1,12 @@
 {
-  "name": "004-youtube-project",
+  "name": "bookstore",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },
