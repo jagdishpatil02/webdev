@@ -1,0 +1,13 @@
+.active {
+    background-color: #000;
+    color: #fff;
+  }
+  
+.inactive {
+    background-color: #fff  ; 
+}
+
+.transition {
+    transition:background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transition duration and easing */
+}
+

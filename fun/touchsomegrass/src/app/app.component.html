@@ -1,0 +1,23 @@
+<div class="w-full flex justify-center relative dark:bg-black">
+    <div class="flex items-center justify-end w-full p-2 absolute">
+        <label class="flex items-center cursor-pointer z-50">
+            <!-- toggle -->
+            <div class=" bg-white w-full h-12 rounded-full border-2 relative flex justify-between items-center"
+               >
+                <button id="marvel" class="w-20 rounded-full h-full flex justify-center items-center transition text-3xl"
+                    [class.active]="handMode" (click)="toggleMode('hand')">
+                    ✋
+                </button>
+
+                <button  class="w-20 rounded-full h-full flex justify-center items-center transition text-3xl"
+                    [class.active]="legMode" (click)="toggleMode('leg')">
+                    🦵
+                </button>
+            </div>
+        </label>
+    </div>
+
+    <div class="container ">
+        <router-outlet></router-outlet>
+    </div>
+</div>
