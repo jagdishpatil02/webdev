@@ -18,7 +18,9 @@ import confetti from 'canvas-confetti';
 export class AppComponent implements OnInit {
   handMode = true;
   legMode = false;
+  clickCount = 0;
   toggleMode(mode: 'hand' | 'leg') {
+    this.clickCount++;
     if (mode === 'hand') {
       document.body.classList.add('hand-cursor');
       document.body.classList.remove('leg-cursor');
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit {
   }
 
   createConfetti(event: MouseEvent): void {
+    this.clickCount++;
     var duration = 10 * 100;
     var animationEnd = Date.now() + duration;
     var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
