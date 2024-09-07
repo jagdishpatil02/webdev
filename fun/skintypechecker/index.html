@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Type Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-4">Skin Type Checker</h1>
+        <form id="skinTypeForm">
+            <div class="mb-4">
+                <p class="mb-2">1. How does your skin feel after washing?</p>
+                <select name="q1" class="w-full p-2 border rounded">
+                    <option value="">Select an option</option>
+                    <option value="dry">Tight and dry</option>
+                    <option value="normal">Comfortable</option>
+                    <option value="oily">Oily or greasy</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <p class="mb-2">2. How often do you need to moisturize?</p>
+                <select name="q2" class="w-full p-2 border rounded">
+                    <option value="">Select an option</option>
+                    <option value="dry">Multiple times a day</option>
+                    <option value="normal">Once a day</option>
+                    <option value="oily">Rarely or never</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <p class="mb-2">3. How does your skin look by midday?</p>
+                <select name="q3" class="w-full p-2 border rounded">
+                    <option value="">Select an option</option>
+                    <option value="dry">Flaky or rough</option>
+                    <option value="normal">No significant change</option>
+                    <option value="combination">Shiny T-zone, normal cheeks</option>
+                    <option value="oily">Shiny all over</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <p class="mb-2">4. How often do you experience breakouts?</p>
+                <select name="q4" class="w-full p-2 border rounded">
+                    <option value="">Select an option</option>
+                    <option value="dry">Rarely</option>
+                    <option value="normal">Occasionally</option>
+                    <option value="oily">Frequently</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <p class="mb-2">5. How does your skin react to new products?</p>
+                <select name="q5" class="w-full p-2 border rounded">
+                    <option value="">Select an option</option>
+                    <option value="sensitive">Often irritated or red</option>
+                    <option value="normal">Usually no reaction</option>
+                    <option value="oily">May cause breakouts</option>
+                </select>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Check Skin Type</button>
+        </form>
+        <div id="result" class="mt-4 hidden"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
