@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagdish & Jayshree Wedding Invitation</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon-32x32.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        .font-script { font-family: 'Tangerine', cursive; }
+        body { font-family: 'Cormorant Garamond', serif; }
+        .invitation-border {
+            background-image: url('path_to_ornate_border_image.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-yellow-100">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <div class="invitation-border bg-yellow-200 rounded-lg shadow-lg p-8 border-4 border-yellow-600">
+            <div class="text-center mb-6">
+                <!-- <img src="path_to_ganesh_image.png" alt="Lord Ganesh" class="w-16 h-16 mx-auto mb-2"> -->
+                <p class="text-xl text-yellow-800">|| श्री गणेशाय नमः ||</p>
+            </div>
+            <h1 class="text-5xl font-script text-center text-yellow-800 mb-6">Wedding Invitation</h1>
+          
+          
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-script text-red-600 mb-4">Jagdish & Jayshree</h2>
+                <p class="text-xl text-yellow-800 mb-2">are getting married on</p>
+                <p class="text-2xl text-yellow-800 mb-2">December <span class="text-3xl font-bold">05,</span> 2024</p>
+                <p class="text-xl text-yellow-800">At Shakuntala Hall, Shirpur</p>
+            </div>
+            <div class="text-center mb-8">
+                <a href="https://maps.app.goo.gl/LD2xNufYBFGw7Jrx7" target="_blank" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                    See the venue
+                </a>
+            </div>
+            <div class="text-center mb-8">
+                <h3 class="text-2xl text-yellow-800 mb-2">Countdown to the Big Day</h3>
+                <div id="countdown" class="text-3xl text-red-600 font-bold"></div>
+            </div>
+        
+            <div class="text-center text-yellow-800 mb-8">
+                <p>Can't wait to celebrate auspicious moment of our family with you!</p>
+                <p>Just a ping away for any queries: +91 7405797571</p>
+            </div>
+          
+         
+        </div>
+    </div>
+    <audio id="bgMusic" loop>
+        <source src="path_to_your_music_file.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date("2024-12-05T12:25:00").getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("countdown").innerHTML = "The Big Day is Here!";
+            }
+        }
+
+        const countdownTimer = setInterval(updateCountdown, 1000);
+
+        // Confetti Animation
+        function throwConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+
+        // Background Music
+        const bgMusic = document.getElementById("bgMusic");
+
+        // On page load
+        window.addEventListener('load', () => {
+            throwConfetti();
+            bgMusic.play().catch(error => {
+                console.log("Auto-play was prevented. Please interact with the page to start the music.");
+            });
+        });
+    </script>
+</body>
+</html>
