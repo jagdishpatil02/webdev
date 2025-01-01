@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.2/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml5@latest/dist/ml5.min.js"></script>
+  </head>
+  <body>
+    <h1>Sentiment Analysis AI Agent</h1>
+    <input id="inputText" type="text" placeholder="Type something..." />
+    <button onclick="analyzeSentiment()">Analyze</button>
+    <p id="result"></p>
+
+    <script>
+      let sentiment;
+
+      function preload() {
+        sentiment = ml5.sentiment("movieReviews", modelLoaded);
+      }
+
+      function modelLoaded() {
+        console.log("Model Loaded!");
+      }
+
+      async function analyzeSentiment() {
+        const text = document.getElementById("inputText").value.trim();
+        if (text) {
+          const prediction = await sentiment.predict(text);
+          console.log(prediction);
+          document.getElementById(
+            "result"
+          ).innerText = `Sentiment score: ${prediction.confidence}`;
+        } else {
+          document.getElementById("result").innerText =
+            "Please enter some text.";
+        }
+      }
+
+      preload(); // Ensure the model is loaded before user interaction
+    </script>
+  </body>
+</html>
