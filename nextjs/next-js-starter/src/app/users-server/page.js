@@ -1,14 +1,13 @@
 export default async function UsersServer() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users = await res.json();
-
+  const data = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await data.json();
   return (
-    <ul className="space-y-4 p-4">
-      {users.map((user) => (
-        <li key={user.id} className="p-4 bg-white shadow-sm text-black">
-          {user.name} {user.email}
+    <div className="space-y-2 ">
+      {response.map((data) => (
+        <li key={data.id} className="bg-black p-4">
+          <span>{data.name}</span>
         </li>
       ))}
-    </ul>
+    </div>
   );
 }
