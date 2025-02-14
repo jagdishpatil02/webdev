@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap');
+
+.font-dancing-script {
+  font-family: 'Dancing Script', cursive;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Great Vibes', cursive;
+}
+
+/* Add this to your global CSS file */
+.heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animate-beat {
+  animation: beat 1s infinite;
+}
